@@ -34,8 +34,8 @@ abstract class BaseListAdapter<T, Binding: ViewDataBinding>
 
     protected abstract fun initListeners(binding: Binding, item: T)
 
-    override fun setOnItemClickListener(item: ((T) -> Unit)) {
-        this.itemClickListener = item
+    override fun setOnItemClickListener(listener: ((T) -> Unit)) {
+        this.itemClickListener = listener
     }
 
     override fun submitList(list: List<T>) {
@@ -48,9 +48,10 @@ abstract class BaseListAdapter<T, Binding: ViewDataBinding>
         notifyDataSetChanged()
     }
 
-    override fun removeItem(item: T) {
-        this.currentList.remove(item)
+    override fun removeItem(position: Int) {
+        this.currentList.remove(currentList[position])
         notifyItemRemoved(position)
+        notifyItemRangeChanged(position, currentList.size)
     }
 
     override fun clear() {

@@ -8,7 +8,7 @@ interface ListController<T> {
 
     fun submitList(list: List<T>)
 
-    fun removeItem(item: T)
+    fun removeItem(position: Int)
 
     fun clear()
 }
