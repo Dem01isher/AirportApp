@@ -8,7 +8,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.properties.Delegates
 
-abstract class BaseListAdapter<T, Binding: ViewDataBinding>()
+abstract class BaseListAdapter<T, Binding: ViewDataBinding>
     : RecyclerView.Adapter<BindingHolder<Binding>>(), ListController<T> {
 
     @get:LayoutRes
@@ -18,15 +18,24 @@ abstract class BaseListAdapter<T, Binding: ViewDataBinding>()
 
     private var position by Delegates.notNull<Int>()
 
+    private var itemClickListener : ((T) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingHolder<Binding> =
         BindingHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), layoutId, parent, false))
 
     override fun onBindViewHolder(holder: BindingHolder<Binding>, position: Int) {
         this.position = holder.bindingAdapterPosition
         initListeners(holder.binding, currentList[holder.bindingAdapterPosition])
+        itemClickListener?.invoke(currentList[holder.bindingAdapterPosition])
     }
 
+    override fun getItemCount(): Int = currentList.size
+
     protected abstract fun initListeners(binding: Binding, item: T)
+
+    override fun setOnItemClickListener(item: ((T) -> Unit)) {
+        this.itemClickListener = item
+    }
 
     override fun submitList(list: List<T>) {
         this.currentList = list.toMutableList()
@@ -47,6 +56,4 @@ abstract class BaseListAdapter<T, Binding: ViewDataBinding>()
         this.currentList.clear()
         notifyDataSetChanged()
     }
-
-    override fun getItemCount(): Int = currentList.size
 }
