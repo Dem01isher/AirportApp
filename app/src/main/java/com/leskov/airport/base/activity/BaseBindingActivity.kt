@@ -5,9 +5,7 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 abstract class BaseBindingActivity<Binding: ViewDataBinding> : AppCompatActivity() {
 
     protected lateinit var binding: Binding
@@ -19,5 +17,6 @@ abstract class BaseBindingActivity<Binding: ViewDataBinding> : AppCompatActivity
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, layoutId)
+        setContentView(binding.root)
     }
 }

@@ -6,7 +6,7 @@ import androidx.databinding.ViewDataBinding
 import com.leskov.airport.base.view_model.BaseViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
+
 abstract class BaseVMFragment<VM: BaseViewModel, Binding: ViewDataBinding> : BaseBindingFragment<Binding>() {
 
     protected abstract val viewModel: VM

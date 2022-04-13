@@ -7,6 +7,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
 
-    override val layoutId: Int
-        get() = R.layout.activity_main
+    override val layoutId: Int = R.layout.activity_main
+
 }

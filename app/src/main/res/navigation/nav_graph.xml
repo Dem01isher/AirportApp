@@ -7,5 +7,15 @@
     <fragment
         android:id="@+id/listOfItemsFragment"
         android:name="com.leskov.airport.presentation.list_of_items.ListOfItemsFragment"
-        android:label="ListOfItemsFragment" />
+        android:label="ListOfItemsFragment" >
+        <action
+            android:id="@+id/action_listOfItemsFragment_to_insertNewItemFragment"
+            app:destination="@id/insertNewItemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/insertNewItemFragment"
+        android:name="com.leskov.airport.presentation.insert_new_item.InsertNewItemFragment"
+        android:label="InsertNewItemFragment" />
+
+
 </navigation>

@@ -15,7 +15,7 @@ abstract class BaseListAdapter<T, Binding: ViewDataBinding>
     @get:LayoutRes
     protected abstract val layoutId: Int
 
-    protected var currentList: MutableList<T> = mutableListOf()
+    private var currentList: MutableList<T> = mutableListOf()
 
     private var position by Delegates.notNull<Int>()
 

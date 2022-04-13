@@ -6,9 +6,11 @@ import androidx.lifecycle.viewModelScope
 import com.leskov.airport.base.view_model.BaseViewModel
 import com.leskov.airport.data.repository.AirportRepository
 import com.leskov.airport.domain.AirportEntity
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class ListOfItemsViewModel @Inject constructor(private val repository: AirportRepository) : BaseViewModel() {
 
     private val _listOfData = MutableLiveData<List<AirportEntity>>()
