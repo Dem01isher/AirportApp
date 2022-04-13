@@ -2,7 +2,6 @@ package com.leskov.airport.di
 
 import android.content.Context
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.leskov.airport.data.local.AirportDao
 import com.leskov.airport.data.local.AirportDatabase
 import com.leskov.airport.data.repository.AirportRepository
@@ -19,12 +18,18 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideRoomDatabase(@ApplicationContext context: Context) : RoomDatabase =
+    fun provideRoomDatabase(@ApplicationContext context: Context): AirportDatabase =
         Room.databaseBuilder(context, AirportDatabase::class.java, AirportDatabase.AIRPORT_DATABASE)
+            .fallbackToDestructiveMigration()
             .allowMainThreadQueries()
             .build()
 
     @Provides
     @Singleton
-    fun provideDao(airportDao: AirportDao) : AirportRepository = AirportRepository.Base(airportDao)
+    fun provideDao(database: AirportDatabase): AirportDao = database.airportDao
+
+    @Provides
+    @Singleton
+    fun provideAirportRepository(airportDao: AirportDao): AirportRepository =
+        AirportRepository.Base(airportDao)
 }

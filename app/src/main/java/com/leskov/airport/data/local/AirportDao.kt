@@ -7,14 +7,14 @@ import com.leskov.airport.domain.AirportEntity
 interface AirportDao {
 
     @Query("SELECT * FROM airport")
-    fun fetchAllData() : List<AirportEntity>
+    suspend fun fetchAllData() : List<AirportEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertItem(item: AirportEntity)
+    suspend fun insertItem(item: AirportEntity)
 
     @Delete
-    fun deleteItem(item: AirportEntity)
+    suspend fun deleteItem(item: AirportEntity)
 
     @Query("DELETE FROM airport")
-    fun removeAllItems()
+    suspend fun removeAllItems()
 }
