@@ -1,4 +1,4 @@
-package com.leskov.airport.base
+package com.leskov.airport.base.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

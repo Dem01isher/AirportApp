@@ -1,8 +1,9 @@
-package com.leskov.airport.base
+package com.leskov.airport.base.fragment
 
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.ViewDataBinding
+import com.leskov.airport.base.view_model.BaseViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

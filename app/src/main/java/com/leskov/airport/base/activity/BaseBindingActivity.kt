@@ -1,4 +1,4 @@
-package com.leskov.airport.base
+package com.leskov.airport.base.activity
 
 import android.os.Bundle
 import androidx.annotation.LayoutRes

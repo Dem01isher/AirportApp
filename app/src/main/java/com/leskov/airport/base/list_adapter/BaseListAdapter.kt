@@ -1,4 +1,4 @@
-package com.leskov.airport.base
+package com.leskov.airport.base.list_adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,6 +6,7 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
+import com.leskov.airport.base.view_holder.BindingHolder
 import kotlin.properties.Delegates
 
 abstract class BaseListAdapter<T, Binding: ViewDataBinding>

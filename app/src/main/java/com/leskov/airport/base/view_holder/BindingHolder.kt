@@ -1,4 +1,4 @@
-package com.leskov.airport.base
+package com.leskov.airport.base.view_holder
 
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView

@@ -1,8 +1,6 @@
 package com.leskov.airport
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import com.leskov.airport.base.BaseBindingActivity
+import com.leskov.airport.base.activity.BaseBindingActivity
 import com.leskov.airport.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 

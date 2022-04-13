@@ -1,4 +1,4 @@
-package com.leskov.airport.base
+package com.leskov.airport.base.list_adapter
 
 interface ListController<T> {
 
