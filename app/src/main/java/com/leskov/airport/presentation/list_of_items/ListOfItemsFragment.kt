@@ -26,6 +26,10 @@ class ListOfItemsFragment : BaseVMFragment<ListOfItemsViewModel, FragmentListOfI
         binding.flAddItem.setOnClickWithDebounce {
             navController.navigate(R.id.action_listOfItemsFragment_to_insertNewItemFragment)
         }
+
+        adapter.setOnLongItemClickListener {
+
+        }
     }
 
     override fun initObservers() {

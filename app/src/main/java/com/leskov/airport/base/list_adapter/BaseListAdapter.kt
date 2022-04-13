@@ -6,28 +6,40 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
+import com.leskov.airport.base.utils.setOnClickWithDebounce
 import com.leskov.airport.base.view_holder.BindingHolder
-import kotlin.properties.Delegates
 
-abstract class BaseListAdapter<T, Binding: ViewDataBinding>
-    : RecyclerView.Adapter<BindingHolder<Binding>>(), ListController<T> {
+abstract class BaseListAdapter<T, Binding : ViewDataBinding>() :
+    RecyclerView.Adapter<BindingHolder<Binding>>(), ListController<T> {
 
     @get:LayoutRes
     protected abstract val layoutId: Int
 
     private var currentList: MutableList<T> = mutableListOf()
 
-    private var position by Delegates.notNull<Int>()
+    private var itemClickListener: ((T) -> Unit)? = null
 
-    private var itemClickListener : ((T) -> Unit)? = null
+    private var longItemClickListener: ((Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingHolder<Binding> =
-        BindingHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), layoutId, parent, false))
+        BindingHolder(
+            DataBindingUtil.inflate(
+                LayoutInflater.from(parent.context),
+                layoutId,
+                parent,
+                false
+            )
+        )
 
     override fun onBindViewHolder(holder: BindingHolder<Binding>, position: Int) {
-        this.position = holder.bindingAdapterPosition
         initListeners(holder.binding, currentList[holder.bindingAdapterPosition])
-        itemClickListener?.invoke(currentList[holder.bindingAdapterPosition])
+        holder.binding.root.setOnClickWithDebounce {
+            itemClickListener?.invoke(currentList[holder.bindingAdapterPosition])
+        }
+        holder.binding.root.setOnLongClickListener {
+            longItemClickListener?.invoke(holder.bindingAdapterPosition)
+            false
+        }
     }
 
     override fun getItemCount(): Int = currentList.size
@@ -36,6 +48,10 @@ abstract class BaseListAdapter<T, Binding: ViewDataBinding>
 
     override fun setOnItemClickListener(listener: ((T) -> Unit)) {
         this.itemClickListener = listener
+    }
+
+    override fun setOnLongItemClickListener(listener: ((Int) -> Unit)) {
+        this.longItemClickListener = listener
     }
 
     override fun submitList(list: List<T>) {
@@ -48,8 +64,8 @@ abstract class BaseListAdapter<T, Binding: ViewDataBinding>
         notifyDataSetChanged()
     }
 
-    override fun removeItem(position: Int) {
-        this.currentList.remove(currentList[position])
+    override fun removeItem(position: Int, item: T) {
+        this.currentList.remove(item)
         notifyItemRemoved(position)
         notifyItemRangeChanged(position, currentList.size)
     }
