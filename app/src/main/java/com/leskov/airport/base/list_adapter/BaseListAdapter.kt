@@ -1,21 +1,21 @@
 package com.leskov.airport.base.list_adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.recyclerview.widget.RecyclerView
-import com.leskov.airport.base.utils.setOnClickWithDebounce
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import com.leskov.airport.base.extensions.setOnClickWithDebounce
 import com.leskov.airport.base.view_holder.BindingHolder
 
-abstract class BaseListAdapter<T, Binding : ViewDataBinding>() :
-    RecyclerView.Adapter<BindingHolder<Binding>>(), ListController<T> {
+abstract class BaseListAdapter<T, Binding : ViewDataBinding> :
+    ListAdapter<T,BindingHolder<Binding>>(DiffUtilCallbacks<T>()), ListController<T> {
 
     @get:LayoutRes
     protected abstract val layoutId: Int
-
-    private var currentList: MutableList<T> = mutableListOf()
 
     private var itemClickListener: ((T) -> Unit)? = null
 
@@ -32,46 +32,52 @@ abstract class BaseListAdapter<T, Binding : ViewDataBinding>() :
         )
 
     override fun onBindViewHolder(holder: BindingHolder<Binding>, position: Int) {
-        initListeners(holder.binding, currentList[holder.bindingAdapterPosition])
-        holder.binding.root.setOnClickWithDebounce {
-            itemClickListener?.invoke(currentList[holder.bindingAdapterPosition])
+        initListeners(holder.binding, holder.bindingAdapterPosition)
+        onViewHolderCreated(holder.binding, holder.bindingAdapterPosition)
+    }
+
+    private fun initListeners(binding: Binding, position: Int) {
+        binding.root.setOnClickWithDebounce {
+            itemClickListener?.invoke(currentList[position])
         }
-        holder.binding.root.setOnLongClickListener {
-            longItemClickListener?.invoke(holder.bindingAdapterPosition)
-            false
-        }
+
+//        binding.root.setOnLongClickListener {
+//            longItemClickListener?.invoke(position)
+//            false
+//        }
     }
 
-    override fun getItemCount(): Int = currentList.size
+    protected abstract fun onViewHolderCreated(binding: Binding, position: Int)
 
-    protected abstract fun initListeners(binding: Binding, item: T)
-
-    override fun setOnItemClickListener(listener: ((T) -> Unit)) {
-        this.itemClickListener = listener
+    // Todo fix listeners
+    override fun setOnItemClickListener(itemView: (T) -> Unit) {
+        itemClickListener = itemView
     }
 
-    override fun setOnLongItemClickListener(listener: ((Int) -> Unit)) {
-        this.longItemClickListener = listener
-    }
-
-    override fun submitList(list: List<T>) {
-        this.currentList = list.toMutableList()
-        notifyDataSetChanged()
+    // Todo fix listeners
+    override fun setOnLongItemClickListener(longClick: (Int) -> Unit) {
+        longItemClickListener = longClick
     }
 
     override fun addItem(item: T) {
-        this.currentList.add(item)
-        notifyDataSetChanged()
+        currentList.add(item)
     }
 
-    override fun removeItem(position: Int, item: T) {
-        this.currentList.remove(item)
-        notifyItemRemoved(position)
-        notifyItemRangeChanged(position, currentList.size)
+    override fun removeItem(item: T) {
+        currentList.remove(item)
     }
 
     override fun clear() {
-        this.currentList.clear()
-        notifyDataSetChanged()
+        currentList.clear()
+    }
+
+    private class DiffUtilCallbacks<T> : DiffUtil.ItemCallback<T>() {
+
+        override fun areItemsTheSame(oldItem: T, newItem: T): Boolean =
+            oldItem == newItem
+
+        @SuppressLint("DiffUtilEquals")
+        override fun areContentsTheSame(oldItem: T, newItem: T): Boolean =
+            oldItem == newItem
     }
 }

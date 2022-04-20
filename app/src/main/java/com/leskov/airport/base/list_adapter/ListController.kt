@@ -8,9 +8,7 @@ interface ListController<T> {
 
     fun setOnLongItemClickListener(position: (Int) -> Unit)
 
-    fun submitList(list: List<T>)
-
-    fun removeItem(position: Int, item: T)
+    fun removeItem(item: T)
 
     fun clear()
 }
