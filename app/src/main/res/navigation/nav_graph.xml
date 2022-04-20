@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/listOfItemsFragment">
+    app:startDestination="@id/mainMenuFragment">
 
     <fragment
         android:id="@+id/listOfItemsFragment"
@@ -16,6 +16,14 @@
         android:id="@+id/insertNewItemFragment"
         android:name="com.leskov.airport.presentation.insert_new_item.InsertNewItemFragment"
         android:label="InsertNewItemFragment" />
+    <fragment
+        android:id="@+id/mainMenuFragment"
+        android:name="com.leskov.airport.presentation.main_menu.MainMenuFragment"
+        android:label="MainMenuFragment" >
+        <action
+            android:id="@+id/action_mainMenuFragment_to_listOfItemsFragment"
+            app:destination="@id/listOfItemsFragment" />
+    </fragment>
 
 
 </navigation>
