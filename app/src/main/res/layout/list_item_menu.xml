@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="menu"
+            type="com.leskov.airport.domain.model.MainMenuModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:layout_marginHorizontal="16dp">
+
+        <include
+            android:id="@+id/btn_menu"
+            layout="@layout/card_view_button"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
