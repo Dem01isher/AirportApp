@@ -2,14 +2,16 @@ package com.leskov.airport.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.leskov.airport.domain.entity.AirplaneEntity
-import com.leskov.airport.domain.entity.AirportEntity
-import com.leskov.airport.domain.entity.RaceEntity
+import com.leskov.airport.domain.entity.*
 
 @Database(
     entities = [AirportEntity::class,
         AirplaneEntity::class,
-        RaceEntity::class],
+        RaceEntity::class,
+        HeadQuarterEntity::class,
+        InsuranceEntity::class,
+        RouteEntity::class,
+        TeamEntity::class],
     version = 1,
     exportSchema = false
 )
@@ -25,5 +27,12 @@ abstract class AirportDatabase : RoomDatabase() {
 
     abstract val raceDao: RaceDao
 
-//    abstract val aircompanyDao: AircompanyDao
+    abstract val headQuarterDao: HeadQuarterDao
+
+    abstract val insuranceDao: InsuranceDao
+
+    abstract val routeDao: RouteDao
+
+    abstract val teamDao: TeamDao
+
 }
