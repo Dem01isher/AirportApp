@@ -11,6 +11,8 @@ interface InsuranceRepository {
 
     suspend fun insertItem(item: InsuranceEntity)
 
+    suspend fun updateItem(item: InsuranceEntity)
+
     suspend fun deleteItem(item: InsuranceEntity)
 
     suspend fun removeAllItems()
@@ -23,6 +25,8 @@ interface InsuranceRepository {
             dao.searchData(searchText)
 
         override suspend fun insertItem(item: InsuranceEntity) = dao.insertItem(item)
+
+        override suspend fun updateItem(item: InsuranceEntity) = dao.updateItem(item)
 
         override suspend fun deleteItem(item: InsuranceEntity) = dao.deleteItem(item)
 

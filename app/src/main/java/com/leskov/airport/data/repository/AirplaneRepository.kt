@@ -13,6 +13,8 @@ interface AirplaneRepository {
 
     suspend fun insertItem(item: AirplaneEntity)
 
+    suspend fun updateItem(item: AirplaneEntity)
+
     suspend fun deleteItem(item: AirplaneEntity)
 
     suspend fun removeAllItems()
@@ -24,6 +26,8 @@ interface AirplaneRepository {
         override suspend fun searchData(searchText: String): List<AirplaneEntity?> = dao.searchData(searchText)
 
         override suspend fun insertItem(item: AirplaneEntity) = dao.insertItem(item)
+
+        override suspend fun updateItem(item: AirplaneEntity) = dao.updateItem(item)
 
         override suspend fun deleteItem(item: AirplaneEntity) = dao.deleteItem(item)
 

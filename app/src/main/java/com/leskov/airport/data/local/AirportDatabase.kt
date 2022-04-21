@@ -18,10 +18,6 @@ import com.leskov.airport.domain.entity.*
 )
 abstract class AirportDatabase : RoomDatabase() {
 
-    companion object {
-        const val AIRPORT_DATABASE = "airport_database"
-    }
-
     abstract val airportDao: AirportDao
 
     abstract val airplaneDao: AirplaneDao

@@ -13,6 +13,8 @@ interface RaceRepository {
 
     suspend fun insertItem(item: RaceEntity)
 
+    suspend fun updateItem(item: RaceEntity)
+
     suspend fun deleteItem(item: RaceEntity)
 
     suspend fun removeAllItems()
@@ -24,6 +26,8 @@ interface RaceRepository {
             dao.searchData(searchText)
 
         override suspend fun insertItem(item: RaceEntity) = dao.insertItem(item)
+
+        override suspend fun updateItem(item: RaceEntity) = dao.updateItem(item)
 
         override suspend fun deleteItem(item: RaceEntity) = dao.deleteItem(item)
 

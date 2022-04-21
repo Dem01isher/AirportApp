@@ -13,6 +13,8 @@ interface AirCompanyRepository {
 
     suspend fun insertItem(item: AirCompanyEntity)
 
+    suspend fun updateItem(item: AirCompanyEntity)
+
     suspend fun deleteItem(item: AirCompanyEntity)
 
     suspend fun removeAllItems()
@@ -23,6 +25,8 @@ interface AirCompanyRepository {
         override suspend fun searchData(searchText: String): List<AirCompanyEntity?> = airCompanyDao.searchData(searchText)
 
         override suspend fun insertItem(item: AirCompanyEntity) = airCompanyDao.insertItem(item)
+
+        override suspend fun updateItem(item: AirCompanyEntity) = airCompanyDao.updateItem(item)
 
         override suspend fun deleteItem(item: AirCompanyEntity) = airCompanyDao.deleteItem(item)
 

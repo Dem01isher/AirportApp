@@ -12,6 +12,8 @@ interface HeadQuarterRepository {
 
     suspend fun insertItem(item: HeadQuarterEntity)
 
+    suspend fun updateItem(item: HeadQuarterEntity)
+
     suspend fun deleteItem(item: HeadQuarterEntity)
 
     suspend fun removeAllItems()
@@ -24,6 +26,8 @@ interface HeadQuarterRepository {
             dao.searchData(searchText)
 
         override suspend fun insertItem(item: HeadQuarterEntity) = dao.insertItem(item)
+
+        override suspend fun updateItem(item: HeadQuarterEntity) = dao.updateItem(item)
 
         override suspend fun deleteItem(item: HeadQuarterEntity) = dao.deleteItem(item)
 

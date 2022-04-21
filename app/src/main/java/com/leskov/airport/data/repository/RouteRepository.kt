@@ -12,6 +12,8 @@ interface RouteRepository {
 
     suspend fun insertItem(item: RouteEntity)
 
+    suspend fun updateItem(item: RouteEntity)
+
     suspend fun deleteItem(item: RouteEntity)
 
     suspend fun removeAllItems()
@@ -24,6 +26,8 @@ interface RouteRepository {
             dao.searchData(searchText)
 
         override suspend fun insertItem(item: RouteEntity) = dao.insertItem(item)
+
+        override suspend fun updateItem(item: RouteEntity) = dao.updateItem(item)
 
         override suspend fun deleteItem(item: RouteEntity) = dao.deleteItem(item)
 

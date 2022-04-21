@@ -12,6 +12,8 @@ interface TeamRepository {
 
     suspend fun insertItem(item: TeamEntity)
 
+    suspend fun updateItem(item: TeamEntity)
+
     suspend fun deleteItem(item: TeamEntity)
 
     suspend fun removeAllItems()
@@ -24,6 +26,8 @@ interface TeamRepository {
             dao.searchData(searchText)
 
         override suspend fun insertItem(item: TeamEntity) = dao.insertItem(item)
+
+        override suspend fun updateItem(item: TeamEntity) = dao.updateItem(item)
 
         override suspend fun deleteItem(item: TeamEntity) = dao.deleteItem(item)
 

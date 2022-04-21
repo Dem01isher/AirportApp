@@ -13,6 +13,8 @@ interface AirportRepository {
 
     suspend fun insertItem(item: AirportEntity)
 
+    suspend fun updateItem(item: AirportEntity)
+
     suspend fun deleteItem(item: AirportEntity)
 
     suspend fun removeAllItems()
@@ -24,6 +26,8 @@ interface AirportRepository {
         override suspend fun searchData(searchText: String): List<AirportEntity?> = airportDao.searchData(searchText)
 
         override suspend fun insertItem(item: AirportEntity) = airportDao.insertItem(item)
+
+        override suspend fun updateItem(item: AirportEntity) = airportDao.updateItem(item)
 
         override suspend fun deleteItem(item: AirportEntity) = airportDao.deleteItem(item)
 
