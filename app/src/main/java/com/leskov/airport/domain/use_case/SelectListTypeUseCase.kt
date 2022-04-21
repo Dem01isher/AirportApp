@@ -6,6 +6,7 @@ import java.util.ArrayList
 import javax.inject.Inject
 
 class SelectListTypeUseCase @Inject constructor(
+    private val airCompanyRepository: AirCompanyRepository,
     private val airportRepository: AirportRepository,
     private val airplaneRepository: AirplaneRepository,
     private val raceRepository: RaceRepository,
@@ -23,6 +24,8 @@ class SelectListTypeUseCase @Inject constructor(
 
     fun fetchSelectedTypeList(): List<Any?> {
         return when (type) {
+
+            TypeOfEntity.AIRCOMPANY -> airCompanyRepository.fetchAllData()
 
             TypeOfEntity.AIRPORT -> airportRepository.fetchAllData()
 
@@ -46,6 +49,7 @@ class SelectListTypeUseCase @Inject constructor(
 
     private fun fetchAllData() : ArrayList<Any?>{
         val currentList : ArrayList<Any?> = arrayListOf()
+        currentList.addAll(airCompanyRepository.fetchAllData())
         currentList.addAll(airplaneRepository.fetchAllData())
         currentList.addAll(airportRepository.fetchAllData())
         currentList.addAll(raceRepository.fetchAllData())

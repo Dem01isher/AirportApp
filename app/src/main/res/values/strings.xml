@@ -16,7 +16,8 @@
     <string name="english_language">English</string>
     <string name="ukrainian_language">Ukrainian</string>
 
-
+    <string name="remove_item">Remove item</string>
+    <string name="you_sure_u_want_remove_item">You sure want to remove item?</string>
     <string name="error_required">Fill current field</string>
 
 
@@ -39,6 +40,7 @@
     <string name="type_of_race">Type of race</string>
     <string name="name_of_airport">Name of airport</string>
     <string name="choose_language">Choose language</string>
+    <string name="current_list_is_empty">Current list is empty</string>
     <string-array name="type_of_airports">
         <item>Federal airport</item>
         <item>Airport of regional significance</item>

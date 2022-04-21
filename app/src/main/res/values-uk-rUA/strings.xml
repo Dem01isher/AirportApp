@@ -17,6 +17,10 @@
     <string name="ukrainian_language">Українська</string>
     <string name="english_language">Англійська</string>
 
+    <string name="remove_item">Видалити елемент</string>
+    <string name="you_sure_u_want_remove_item">Ви впевнені, що хочете видалити елемент?</string>
+
+
     <!-- Airplane -->
     <string name="capacity">Вантажопідйомність</string>
     <string name="number_of_airplane">Номер</string>
@@ -28,6 +32,7 @@
         <item>Триплан</item>
         <item>Багатоплан</item>
     </string-array>
+
     <!-- Airport -->
     <string name="country_location">Розташування країни</string>
     <string name="city">Місто</string>
@@ -36,6 +41,7 @@
     <string name="type_of_race">Тип рейсу</string>
     <string name="name_of_airport">Назва аеропорту</string>
     <string name="choose_language">Виберіть мову</string>
+    <string name="current_list_is_empty">Поточний список порожній</string>
     <string-array name="type_of_airports">
         <item>Федеральний аеропорт</item>
         <item>Аеропорт обласного значення</item>

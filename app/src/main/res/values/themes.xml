@@ -14,4 +14,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="ContentLoadingProgress">
+        <item name="colorAccent">@color/purple_500</item>
+    </style>
 </resources>

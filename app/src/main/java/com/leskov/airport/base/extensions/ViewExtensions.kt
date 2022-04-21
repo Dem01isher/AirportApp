@@ -71,19 +71,18 @@ fun Fragment.showSnackbarWithRemove(
         .addCallback(object : BaseTransientBottomBar.BaseCallback<Snackbar>() {
             override fun onShown(transientBottomBar: Snackbar?) {
                 super.onShown(transientBottomBar)
-                onComplete.invoke()
             }
 
-            override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {}
+            override fun onDismissed(transientBottomBar: Snackbar?, event: Int) { onComplete.invoke() }
         }).show()
 }
 
-fun Fragment.showAlertDialog(title: String, content: String, listener: (() -> Unit)? = null) {
+fun Fragment.showAlertDialog(title: String, content: String, negativeAction: () -> Unit, positiveAction: () -> Unit) {
     AlertDialog.Builder(requireContext())
         .setTitle(title)
         .setMessage(content)
-        .setNegativeButton("Cancel", null)
-        .setPositiveButton("Confirm") { _, _ -> listener?.invoke() }
+        .setNegativeButton(getString(com.leskov.airport.R.string.cancel)) { _, _ -> negativeAction.invoke() }
+        .setPositiveButton(getString(com.leskov.airport.R.string.confirm)) { _, _ -> positiveAction.invoke() }
         .create()
         .show()
 }
@@ -95,7 +94,7 @@ fun Fragment.showAlertDialogWithList(title: String, array: Array<String>, action
             action.invoke(which)
             dialog.dismiss()
         }
-        .setNegativeButton(getString(R.string.cancel), null)
+        .setNegativeButton(getString(com.leskov.airport.R.string.cancel), null)
         .show()
 }
 
