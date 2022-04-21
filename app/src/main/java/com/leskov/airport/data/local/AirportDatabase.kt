@@ -11,7 +11,8 @@ import com.leskov.airport.domain.entity.*
         HeadQuarterEntity::class,
         InsuranceEntity::class,
         RouteEntity::class,
-        TeamEntity::class],
+        TeamEntity::class,
+        AirCompanyEntity::class],
     version = 1,
     exportSchema = false
 )
@@ -35,4 +36,5 @@ abstract class AirportDatabase : RoomDatabase() {
 
     abstract val teamDao: TeamDao
 
+    abstract val airCompanyDao: AirCompanyDao
 }

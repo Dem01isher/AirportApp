@@ -51,4 +51,8 @@ object DatabaseModule {
     @Singleton
     fun provideRaceDao(database: AirportDatabase) : RaceDao = database.raceDao
 
+    @Provides
+    @Singleton
+    fun provideAirCompanyDao(database: AirportDatabase) : AirCompanyDao = database.airCompanyDao
+
 }

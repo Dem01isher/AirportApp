@@ -53,6 +53,11 @@ object AppModule {
 
     @Provides
     @Singleton
+    fun provideAirCompanyRepository(airCompanyDao: AirCompanyDao) : AirCompanyRepository =
+        AirCompanyRepository.Base(airCompanyDao)
+
+    @Provides
+    @Singleton
     fun provideDispatcherController(): DispatcherController =
         DispatcherController.Base()
 
