@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AirportApp</string>
+    <string name="app_name" translatable="false">AirportApp</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="remove_is_success">Item has been removed successfully</string>
@@ -9,6 +9,13 @@
     <string name="day">Day</string>
     <string name="year">Year</string>
     <string name="month">Month</string>
+    <string name="menu">Menu</string>
+    <string name="cancel">Cancel</string>
+    <string name="choose_table">Choose table</string>
+    <string name="choose_type">Choose type</string>
+    <string name="english_language">English</string>
+    <string name="ukrainian_language">Ukrainian</string>
+
 
     <string name="error_required">Fill current field</string>
 
@@ -31,6 +38,7 @@
     <string name="count_of_lanes">Count of lanes</string>
     <string name="type_of_race">Type of race</string>
     <string name="name_of_airport">Name of airport</string>
+    <string name="choose_language">Choose language</string>
     <string-array name="type_of_airports">
         <item>Federal airport</item>
         <item>Airport of regional significance</item>

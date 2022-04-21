@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title">Назва</string>
+    <string name="description">Опис</string>
+    <string name="remove_is_success">Елемент успішно видалено</string>
+    <string name="minute">Хвилина</string>
+    <string name="hours">Години</string>
+    <string name="confirm">Підтвердити</string>
+    <string name="day">День</string>
+    <string name="year">Рік</string>
+    <string name="month">Місяць</string>
+    <string name="menu">Меню</string>
+    <string name="cancel">Скасувати</string>
+    <string name="choose_table">Виберіть таблицю</string>
+    <string name="choose_type">Виберіть тип</string>
+    <string name="error_required">Заповніть дане поле</string>
+    <string name="ukrainian_language">Українська</string>
+    <string name="english_language">Англійська</string>
+
+    <!-- Airplane -->
+    <string name="capacity">Вантажопідйомність</string>
+    <string name="number_of_airplane">Номер</string>
+    <string name="producer_of_airplane">Виробник</string>
+    <string name="model">Модель</string>
+    <string-array name="type_of_airplanes">
+        <item>Моноплан</item>
+        <item>Біплан</item>
+        <item>Триплан</item>
+        <item>Багатоплан</item>
+    </string-array>
+    <!-- Airport -->
+    <string name="country_location">Розташування країни</string>
+    <string name="city">Місто</string>
+    <string name="count_of_terminals">Кількість терміналів</string>
+    <string name="count_of_lanes">Кількість ліній</string>
+    <string name="type_of_race">Тип рейсу</string>
+    <string name="name_of_airport">Назва аеропорту</string>
+    <string name="choose_language">Виберіть мову</string>
+    <string-array name="type_of_airports">
+        <item>Федеральний аеропорт</item>
+        <item>Аеропорт обласного значення</item>
+        <item>Місцевий аеропорт</item>
+    </string-array>
+    <!-- Race -->
+</resources>

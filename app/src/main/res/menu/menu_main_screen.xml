@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/ukrainian_language"
-        android:title="Ukrainian"/>
-    <item
-        android:id="@+id/english_language"
-        android:title="English"/>
+        android:id="@+id/show_more_menu"
+        android:icon="@drawable/ic_more"
+        app:showAsAction="always"
+        android:title=""/>
 </menu>

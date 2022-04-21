@@ -18,6 +18,9 @@ import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 
+import android.annotation.SuppressLint
+import androidx.annotation.IdRes
+
 
 fun View.updateVisibility(isVisible: Boolean) {
     if (isVisible) this.visibility = View.VISIBLE else this.visibility = View.GONE
@@ -92,7 +95,26 @@ fun Fragment.showAlertDialogWithList(title: String, array: Array<String>, action
             action.invoke(which)
             dialog.dismiss()
         }
-        .setNegativeButton("Cancel", null)
+        .setNegativeButton(getString(R.string.cancel), null)
+        .show()
+}
+
+@SuppressLint("ResourceType")
+fun Fragment.showAlertDialogWithList(
+    title: String,
+    list: Array<String>,
+    @IdRes icon: Int,
+    action: (Int) -> Unit
+) {
+    AlertDialog.Builder(requireContext())
+        .setTitle(title)
+        .setIcon(icon)
+        .setItems(list) { dialog, position ->
+            action.invoke(position)
+            dialog.dismiss()
+        }
+        .setNegativeButton(getString(com.leskov.airport.R.string.cancel), null)
+        .create()
         .show()
 }
 

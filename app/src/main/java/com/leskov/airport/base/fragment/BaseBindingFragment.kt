@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import com.leskov.airport.R
 import com.leskov.airport.base.dispatcher.DispatcherController
+import com.leskov.airport.base.utils.helper.SharedPreferenceManager
 
 
 abstract class BaseBindingFragment<Binding : ViewDataBinding> : Fragment() {
@@ -27,6 +28,10 @@ abstract class BaseBindingFragment<Binding : ViewDataBinding> : Fragment() {
 
     protected val dispatcherController by lazy {
         DispatcherController.Base()
+    }
+
+    protected val sharedPreferenceManager by lazy {
+        SharedPreferenceManager(requireContext())
     }
 
     override fun onCreateView(
