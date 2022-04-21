@@ -30,9 +30,22 @@ object DatabaseModule {
     @Singleton
     fun provideAirplaneDao(database: AirportDatabase) : AirplaneDao = database.airplaneDao
 
-//    @Provides
-//    @Singleton
-//    fun provideAircompanyDao(database: AirportDatabase) : AircompanyDao = database.aircompanyDao
+
+    @Provides
+    @Singleton
+    fun provideTeamDao(database: AirportDatabase) : TeamDao = database.teamDao
+
+    @Provides
+    @Singleton
+    fun provideHeadQuarterDao(database: AirportDatabase) : HeadQuarterDao = database.headQuarterDao
+
+    @Provides
+    @Singleton
+    fun provideRouteDao(database: AirportDatabase) : RouteDao = database.routeDao
+
+    @Provides
+    @Singleton
+    fun provideInsuranceDao(database: AirportDatabase) : InsuranceDao = database.insuranceDao
 
     @Provides
     @Singleton
