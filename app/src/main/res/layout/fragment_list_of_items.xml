@@ -32,46 +32,77 @@
                 android:layout_marginStart="16dp"
                 android:src="@drawable/ic_arrow_back" />
 
+            <ImageView
+                android:id="@+id/iv_cancel_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_close"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:paddingEnd="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"/>
+
             <TextView
                 android:id="@+id/toolbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Text"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center"
+                android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="64dp"/>
+                android:layout_marginStart="72dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:letterSpacing="0.01"
+                android:textStyle="normal"
+                tools:text="Text" />
 
             <EditText
                 android:id="@+id/search_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@id/arrow_back"
+                android:layout_alignStart="@id/iv_cancel_search"
                 android:layout_alignEnd="@id/btn_search"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentBottom="true"
                 android:drawableEnd="@drawable/ic_search"
-                android:layout_marginHorizontal="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="28dp"
                 android:visibility="gone"
-                android:drawableTint="@color/black"/>
+                android:drawableTint="@color/white"/>
 
             <ImageView
                 android:id="@+id/btn_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@id/btn_more"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="end|center"
+                android:layout_marginEnd="42dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/ic_search" />
+
+            <ImageView
+                android:id="@+id/btn_more"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:layout_gravity="end|center"
+                android:layout_marginEnd="10dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:layout_marginEnd="16dp"
-                android:src="@drawable/ic_search" />
+                android:src="@drawable/ic_more"
+                app:tint="@color/white" />
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -90,7 +121,6 @@
             android:backgroundTint="@color/purple_500"
             android:contentDescription="@null"
             android:src="@drawable/ic_add"
-            app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:rippleColor="@color/purple_500"

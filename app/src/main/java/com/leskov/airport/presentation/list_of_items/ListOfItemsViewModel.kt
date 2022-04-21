@@ -1,48 +1,34 @@
 package com.leskov.airport.presentation.list_of_items
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.viewModelScope
 import com.leskov.airport.base.event.Event
 import com.leskov.airport.base.event.postEvent
 import com.leskov.airport.base.live_data.SingleEventLiveData
 import com.leskov.airport.base.view_model.BaseViewModel
-import com.leskov.airport.data.repository.AirportRepository
-import com.leskov.airport.domain.entity.AirportEntity
+import com.leskov.airport.domain.entity.TypeOfEntity
+import com.leskov.airport.domain.use_case.SelectListTypeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
+import java.util.ArrayList
 import javax.inject.Inject
 
 @HiltViewModel
-class ListOfItemsViewModel @Inject constructor(private val repository: AirportRepository) : BaseViewModel() {
+class ListOfItemsViewModel @Inject constructor(private val selectListTypeUseCase: SelectListTypeUseCase) :
+    BaseViewModel() {
 
     private val _listOfData =
-        SingleEventLiveData<List<AirportEntity>>()
-    val listOfData : LiveData<List<AirportEntity>> = _listOfData
-
-    val action = SingleEventLiveData<Event<Unit>>()
+        SingleEventLiveData<Event<List<Any?>>>()
+    val listOfData: LiveData<Event<List<Any?>>> = _listOfData
 
     init {
-        fetchAllData()
+        fetchSelectedTypeData()
     }
 
-    fun fetchAllData(){
-        viewModelScope.launch {
-            _loading.postEvent(true)
-            _listOfData.postValue(repository.fetchAllData())
-            _loading.postEvent(false)
-        }
+    fun setType(type: String){
+        selectListTypeUseCase.setType(type)
     }
 
-    suspend fun searchData(searchText: String) {
-        _listOfData.postValue(repository.searchData(searchText))
+    fun fetchSelectedTypeData() {
+        _listOfData.postEvent(selectListTypeUseCase.fetchSelectedTypeList())
     }
 
-    fun removeData(item: AirportEntity){
-        viewModelScope.launch(dispatcherController.launchInMain()) {
-            _loading.postEvent(true)
-            repository.deleteItem(item)
-            _loading.postEvent(false)
-            action.postEvent(Unit)
-        }
-    }
 }

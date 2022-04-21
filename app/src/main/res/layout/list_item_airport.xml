@@ -3,13 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="item"
-            type="com.leskov.airport.domain.entity.AirportEntity" />
-    </data>
-
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_container"
             android:layout_width="match_parent"
@@ -34,6 +27,7 @@
 
                 <LinearLayout
                     android:id="@+id/header_layout"
+                    android:foreground="?attr/selectableItemBackground"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -49,9 +43,10 @@
                         android:layout_marginTop="8dp"
                         android:layout_weight="1"
                         android:gravity="start"
-                        android:text="@{item.title}"
                         android:textColor="@color/black"
                         android:textSize="18sp"
+                        android:drawableStart="@drawable/ic_airport"
+                        android:drawablePadding="8dp"
                         android:textStyle="bold"
                         tools:text="Header" />
 
@@ -101,20 +96,18 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginHorizontal="24dp"
                                 android:gravity="start"
-                                android:text="Type"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
-                                tools:text="Title" />
+                                tools:text="City" />
 
                             <TextView
-                                android:id="@+id/type"
+                                android:id="@+id/city"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="start"
-                                android:text="@{item.type}"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
-                                tools:text="Type" />
+                                tools:text="Kyiv" />
 
                         </LinearLayout>
 
@@ -130,20 +123,19 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginHorizontal="24dp"
                                 android:gravity="start"
-                                android:text="Model"
+                                android:text="@string/country_location"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
                                 tools:text="Model" />
 
                             <TextView
-                                android:id="@+id/model"
+                                android:id="@+id/country_location"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="start"
-                                android:text="@{item.model}"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
-                                tools:text="model" />
+                                tools:text="location" />
 
                         </LinearLayout>
 
@@ -159,20 +151,18 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginHorizontal="24dp"
                                 android:gravity="start"
-                                android:text="Load Capacity"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
-                                tools:text="Load Capacity" />
+                                tools:text="Count of terminals" />
 
                             <TextView
-                                android:id="@+id/load_capacity"
+                                android:id="@+id/count_of_terminals"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="start"
-                                android:text="@{item.loadCapacity}"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
-                                tools:text="Type" />
+                                tools:text="5" />
 
 
                         </LinearLayout>

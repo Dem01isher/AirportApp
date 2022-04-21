@@ -1,22 +1,22 @@
 package com.leskov.airport.base.extensions
 
+import android.R
 import android.app.AlertDialog
 import android.content.Context
 import android.os.SystemClock
+import android.text.TextUtils
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.annotation.StringRes
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
-import androidx.core.content.ContextCompat.getSystemService
-
-
-
+import com.google.android.material.textfield.TextInputEditText
 
 
 fun View.updateVisibility(isVisible: Boolean) {
@@ -42,6 +42,21 @@ fun Fragment.showMessage(text: String, duration: Int = Toast.LENGTH_SHORT) {
 
 fun Fragment.showMessage(@StringRes text: Int, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(requireContext(), text, duration).show()
+}
+
+fun Fragment.isInputsFilled(vararg editText: TextInputEditText): Boolean {
+    var result = false
+
+    for (text in editText) {
+        if (TextUtils.isEmpty(text.text.toString())) {
+            val focusView: View = text
+            text.error = getString(com.leskov.airport.R.string.error_required)
+            focusView.requestFocus()
+            result = true
+        }
+
+    }
+    return result
 }
 
 fun Fragment.showSnackbarWithRemove(
@@ -70,6 +85,22 @@ fun Fragment.showAlertDialog(title: String, content: String, listener: (() -> Un
         .show()
 }
 
+fun Fragment.showAlertDialogWithList(title: String, array: Array<String>, action: (Int) -> Unit) {
+    MaterialAlertDialogBuilder(requireContext())
+        .setTitle(title)
+        .setItems(array) { dialog, which ->
+            action.invoke(which)
+            dialog.dismiss()
+        }
+        .setNegativeButton("Cancel", null)
+        .show()
+}
+
+fun Fragment.initSelectedTypeList(autoCompleteTextView: AutoCompleteTextView, list: List<String>) {
+    val adapter = ArrayAdapter(requireContext(), R.layout.simple_dropdown_item_1line, list)
+    autoCompleteTextView.setAdapter(adapter)
+}
+
 fun Fragment.hideKeyboard(view: View) {
     val imm: InputMethodManager? =
         requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
@@ -84,11 +115,11 @@ fun SwipeRefreshLayout.hideRefresh() {
     this.updateVisibility(false)
 }
 
-fun View.visible(){
+fun View.visible() {
     visibility = View.VISIBLE
 }
 
-fun View.inVisible(){
+fun View.inVisible() {
     visibility = View.INVISIBLE
 }
 
