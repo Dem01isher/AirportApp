@@ -2,7 +2,39 @@
     <string name="app_name">AirportApp</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
-    <string name="model">Model</string>
-    <string name="capacity">Load Capacity</string>
     <string name="remove_is_success">Item has been removed successfully</string>
+    <string name="minute">Minute</string>
+    <string name="hours">Hours</string>
+    <string name="confirm">Confirm</string>
+    <string name="day">Day</string>
+    <string name="year">Year</string>
+    <string name="month">Month</string>
+
+    <string name="error_required">Fill current field</string>
+
+
+    <!-- Airplane -->
+    <string name="capacity">Load Capacity</string>
+    <string name="number_of_airplane">Number</string>
+    <string name="producer_of_airplane">Producer</string>
+    <string name="model">Model</string>
+    <string-array name="type_of_airplanes">
+        <item>Monoplanes</item>
+        <item>Biplanes</item>
+        <item>Triplanes</item>
+        <item>Multiplanes</item>
+    </string-array>
+    <!-- Airport -->
+    <string name="country_location">Country Location</string>
+    <string name="city">City</string>
+    <string name="count_of_terminals">Count of terminals</string>
+    <string name="count_of_lanes">Count of lanes</string>
+    <string name="type_of_race">Type of race</string>
+    <string name="name_of_airport">Name of airport</string>
+    <string-array name="type_of_airports">
+        <item>Federal airport</item>
+        <item>Airport of regional significance</item>
+        <item>Local airport</item>
+    </string-array>
+    <!-- Race -->
 </resources>
