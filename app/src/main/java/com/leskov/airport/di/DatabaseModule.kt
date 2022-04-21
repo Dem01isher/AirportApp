@@ -14,10 +14,12 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
 
+    private const val AIRPORT_DATABASE = "airport_database"
+
     @Singleton
     @Provides
     fun provideRoomDatabase(@ApplicationContext context: Context): AirportDatabase =
-        Room.databaseBuilder(context, AirportDatabase::class.java, AirportDatabase.AIRPORT_DATABASE)
+        Room.databaseBuilder(context, AirportDatabase::class.java, AIRPORT_DATABASE)
             .fallbackToDestructiveMigration()
             .allowMainThreadQueries()
             .build()
@@ -29,7 +31,6 @@ object DatabaseModule {
     @Provides
     @Singleton
     fun provideAirplaneDao(database: AirportDatabase) : AirplaneDao = database.airplaneDao
-
 
     @Provides
     @Singleton

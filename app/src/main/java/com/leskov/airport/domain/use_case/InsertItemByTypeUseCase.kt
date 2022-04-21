@@ -5,6 +5,7 @@ import com.leskov.airport.domain.entity.*
 import javax.inject.Inject
 
 class InsertItemByTypeUseCase @Inject constructor(
+    private val airCompanyRepository: AirCompanyRepository,
     private val airportRepository: AirportRepository,
     private val airplaneRepository: AirplaneRepository,
     private val raceRepository: RaceRepository,
@@ -21,6 +22,8 @@ class InsertItemByTypeUseCase @Inject constructor(
 
     suspend fun insertItemByType(item: Any?){
         when (type) {
+
+            TypeOfEntity.AIRCOMPANY -> airCompanyRepository.insertItem(item as AirCompanyEntity)
 
             TypeOfEntity.AIRPORT -> airportRepository.insertItem(item as AirportEntity)
 
