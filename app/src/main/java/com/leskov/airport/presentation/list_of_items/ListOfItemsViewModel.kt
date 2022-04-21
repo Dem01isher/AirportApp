@@ -5,10 +5,8 @@ import com.leskov.airport.base.event.Event
 import com.leskov.airport.base.event.postEvent
 import com.leskov.airport.base.live_data.SingleEventLiveData
 import com.leskov.airport.base.view_model.BaseViewModel
-import com.leskov.airport.domain.entity.TypeOfEntity
 import com.leskov.airport.domain.use_case.SelectListTypeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import java.util.ArrayList
 import javax.inject.Inject
 
 @HiltViewModel

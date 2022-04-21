@@ -7,9 +7,8 @@ import com.leskov.airport.R
 import com.leskov.airport.base.extensions.showAlertDialogWithList
 import com.leskov.airport.base.fragment.BaseBindingFragment
 import com.leskov.airport.databinding.FragmentMainMenuBinding
-import com.leskov.airport.domain.entity.TypeOfEntity
+import com.leskov.airport.domain.entity.listOfItems
 import com.leskov.airport.domain.model.Languages
-import com.leskov.airport.domain.model.MainMenuModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -19,12 +18,6 @@ class MainMenuFragment : BaseBindingFragment<FragmentMainMenuBinding>() {
     override val layoutId: Int = R.layout.fragment_main_menu
 
     private val menuAdapter = MainMenuAdapter()
-
-    private val listOfItems: List<MainMenuModel> = listOf(
-        MainMenuModel(TypeOfEntity.AIRPLANE, R.drawable.ic_airplane),
-        MainMenuModel(TypeOfEntity.RACE, R.drawable.ic_race),
-        MainMenuModel(TypeOfEntity.AIRPORT, R.drawable.ic_airport)
-    )
 
     @SuppressLint("ResourceType")
     override fun initListeners() {

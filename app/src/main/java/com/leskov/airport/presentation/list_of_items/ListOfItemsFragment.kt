@@ -35,7 +35,7 @@ class ListOfItemsFragment : BaseVMFragment<ListOfItemsViewModel, FragmentListOfI
         }
 
         binding.btnMore.setOnClickWithDebounce {
-            showAlertDialogWithList("Select type", listOfTypes) {
+            showAlertDialogWithList(getString(R.string.choose_table), listOfTypes) {
                 viewModel.setType(listOfTypes[it])
                 viewModel.fetchSelectedTypeData()
             }
