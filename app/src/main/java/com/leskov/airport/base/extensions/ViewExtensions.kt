@@ -19,6 +19,10 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.EditText
 import androidx.annotation.IdRes
 
 
@@ -37,6 +41,23 @@ fun View.setOnClickWithDebounce(debounceTime: Long = 600L, action: () -> Unit) {
             lastClickTime = SystemClock.elapsedRealtime()
         }
     })
+}
+
+fun EditText.showKeyboard(activity: Activity){
+    val inputMethodManager = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+    this.requestFocus()
+    inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+}
+
+fun Fragment.hideKeyboard() {
+    val imm = requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+    //Find the currently focused view, so we can grab the correct window token from it.
+    var view = requireActivity().currentFocus
+    //If no view currently has focus, create a new one, just so we can grab a window token from it
+    if (view == null) {
+        view = View(activity)
+    }
+    imm.hideSoftInputFromWindow(view.windowToken, 0)
 }
 
 fun Fragment.showMessage(text: String, duration: Int = Toast.LENGTH_SHORT) {
@@ -122,10 +143,23 @@ fun Fragment.initSelectedTypeList(autoCompleteTextView: AutoCompleteTextView, li
     autoCompleteTextView.setAdapter(adapter)
 }
 
-fun Fragment.hideKeyboard(view: View) {
-    val imm: InputMethodManager? =
-        requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
-    imm?.hideSoftInputFromWindow(view.windowToken, 0)
+fun EditText.hideKeyboard(activity: Activity) {
+    val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+    imm!!.hideSoftInputFromWindow(windowToken, 0)
+}
+
+fun EditText.onSearchQueryListener(listener: (String) -> Unit){
+    addTextChangedListener(object : TextWatcher {
+        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            if (p0 != null) listener.invoke(p0.toString())
+        }
+
+        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            if (p0 != null) listener.invoke(p0.toString())
+        }
+
+        override fun afterTextChanged(p0: Editable?) {}
+    })
 }
 
 fun SwipeRefreshLayout.showRefresh() {

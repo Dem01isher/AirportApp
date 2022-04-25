@@ -24,6 +24,7 @@
             android:id="@+id/hours"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:maxLength="2"
             android:inputType="datetime" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -54,6 +55,7 @@
             android:id="@+id/minute"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:maxLength="2"
             android:inputType="datetime" />
 
     </com.google.android.material.textfield.TextInputLayout>

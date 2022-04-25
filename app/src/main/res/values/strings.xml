@@ -32,19 +32,80 @@
         <item>Triplanes</item>
         <item>Multiplanes</item>
     </string-array>
+
     <!-- Airport -->
     <string name="country_location">Country Location</string>
     <string name="city">City</string>
     <string name="count_of_terminals">Count of terminals</string>
     <string name="count_of_lanes">Count of lanes</string>
-    <string name="type_of_race">Type of race</string>
     <string name="name_of_airport">Name of airport</string>
     <string name="choose_language">Choose language</string>
     <string name="current_list_is_empty">Current list is empty</string>
+    <string name="count_of_people">Count of people</string>
+    <string name="count_of_engineers">Count of engineers</string>
+    <string name="count_of_pilots">Count of Pilots</string>
+    <string name="departure_of_country">Departure of Country</string>
+    <string name="destination_country">Destination Country</string>
+    <string name="length">Length</string>
     <string-array name="type_of_airports">
         <item>Federal airport</item>
         <item>Airport of regional significance</item>
         <item>Local airport</item>
     </string-array>
+
+    <string-array name="type_of_airlines">
+        <item>Ultra low-cost</item>
+        <item>Middle low-cost</item>
+        <item>Low Fare Low-cost</item>
+    </string-array>
+
     <!-- Race -->
+    <string name="number_of_race">Number of race</string>
+    <string name="departure_time">Departure time</string>
+    <string name="arrival_time">Arrival time</string>
+    <string name="flight_time">Flight time</string>
+    <string name="type_of_race">Type of race</string>
+
+    <string name="name">Name</string>
+    <string name="office_location">Office location</string>
+    <string name="airline_type">Airline type</string>
+    <string name="foundation_date">Foundation date</string>
+    <!-- Insurance -->
+    <string name="contact_number">Contact number</string>
+    <string name="type_of_insurance">Type of insurance</string>
+    <string name="service_name">Service name</string>
+    <string name="service_price">Service price</string>
+    <string name="term">Term of insurance</string>
+    <!-- Team -->
+    <string name="form_of_insurance">Form of insurance</string>
+    <string name="crew_number">Crew number</string>
+    <string name="number_of_pilots">Count of pilots</string>
+    <string name="number_of_flight_attendants">Count of flight attendants</string>
+    <string name="number_of_engineers">Count of engineers</string>
+    <!-- Route -->
+    <string name="number_of_route">Number of route</string>
+    <string name="route_status">Route status</string>
+    <string name="number_of_headquarters">Number of headquarters</string>
+    <string name="count_of_beds">Count of beds</string>
+    <string name="number_of_floors">Number of floors</string>
+    <string name="type_of_air_company">Type of air company</string>
+    <string name="number_of_beds">Number of beds:</string>
+    <string name="availability_of_kitchen">Availability of kitchen</string>
+    <string name="count_of_floors">Count of floors:</string>
+    <string name="entertainment_room">Entertainment room</string>
+    <string name="price">Price:</string>
+    <string name="current_list_switched">Current list has been switched with %s</string>
+    <string name="airplane">Airplane</string>
+    <string name="aircompany">AirCompany</string>
+    <string name="race">Race</string>
+    <string name="airport">Airport</string>
+    <string name="route">Route</string>
+    <string name="team">Team</string>
+    <string name="headquarters">Headquarters</string>
+    <string name="insurance">Insurance</string>
+    <string name="count_of_movers">Count of movers</string>
+    <string name="have_entertainment_room">Have entertainment room</string>
+    <string name="no_entertainment_room">No entertainment room</string>
+    <string name="kitchen_is_available">Kitchen is available</string>
+    <string name="kitchen_is_disabled">Kitchen is disabled</string>
 </resources>

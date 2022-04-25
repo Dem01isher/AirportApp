@@ -24,6 +24,7 @@
             android:id="@+id/day"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:maxLength="2"
             android:inputType="number" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -54,6 +55,7 @@
             android:id="@+id/month"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:maxLength="2"
             android:inputType="number" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -84,7 +86,8 @@
             android:id="@+id/year"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLength="4"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 

@@ -147,6 +147,29 @@ object AppModule {
 
     @Provides
     @Singleton
+    fun provideFindItemByTypeUseCase(
+        airCompanyRepository: AirCompanyRepository,
+        airportRepository: AirportRepository,
+        raceRepository: RaceRepository,
+        airplaneRepository: AirplaneRepository,
+        headQuarterRepository: HeadQuarterRepository,
+        insuranceRepository: InsuranceRepository,
+        routeRepository: RouteRepository,
+        teamRepository: TeamRepository
+    ): FindItemByTypeUseCase =
+        FindItemByTypeUseCase(
+            airCompanyRepository,
+            airportRepository,
+            airplaneRepository,
+            raceRepository,
+            headQuarterRepository,
+            insuranceRepository,
+            routeRepository,
+            teamRepository
+        )
+
+    @Provides
+    @Singleton
     fun provideRemoveItemByTypeUseCase(
         airCompanyRepository: AirCompanyRepository,
         airportRepository: AirportRepository,

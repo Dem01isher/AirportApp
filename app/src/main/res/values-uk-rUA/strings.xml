@@ -38,14 +38,74 @@
     <string name="city">Місто</string>
     <string name="count_of_terminals">Кількість терміналів</string>
     <string name="count_of_lanes">Кількість ліній</string>
-    <string name="type_of_race">Тип рейсу</string>
     <string name="name_of_airport">Назва аеропорту</string>
     <string name="choose_language">Виберіть мову</string>
     <string name="current_list_is_empty">Поточний список порожній</string>
+    <string name="count_of_people">Count of people</string>
+    <string name="count_of_engineers">Count of engineers</string>
+    <string name="count_of_pilots">Count of Pilots</string>
+    <string name="departure_of_country">Departure of Country</string>
+    <string name="destination_country">Destination Country</string>
+    <string name="length">Length</string>
     <string-array name="type_of_airports">
         <item>Федеральний аеропорт</item>
         <item>Аеропорт обласного значення</item>
         <item>Місцевий аеропорт</item>
     </string-array>
     <!-- Race -->
+    <string name="number_of_race">Номер рейсу</string>
+    <string name="departure_time">Час відльоту</string>
+    <string name="arrival_time">Час прибуття</string>
+    <string name="flight_time">Час польоту</string>
+    <string name="type_of_race">Тип рейсу</string>
+
+    <string name="name">Name</string>
+    <string name="office_location">Розташування офісу</string>
+    <string name="airline_type">Тип авіакомпанії</string>
+    <string-array name="type_of_airlines">
+        <item>Ultra low-cost</item>
+        <item>Middle low-cost</item>
+        <item>Low Fare Low-cost</item>
+    </string-array>
+    <string name="foundation_date">Дата заснування</string>
+    <!-- Insurance -->
+    <string name="contact_number">Контактний номер</string>
+    <string name="type_of_insurance">Тип страховки</string>
+    <string name="service_name">Назва послуги</string>
+    <string name="service_price">Ціна послуги</string>
+    <string name="term">Термін дії</string>
+    <!-- Team -->
+    <string name="form_of_insurance">Форма страховки</string>
+    <string name="crew_number">Номер екіпажу</string>
+    <string name="number_of_pilots">Кількість пілотів</string>
+    <string name="number_of_flight_attendants">Кількість бортпровідників</string>
+    <string name="number_of_engineers">Кількість інженерів</string>
+    <!-- Route -->
+    <string name="number_of_route">Номер рейсу</string>
+    <string name="route_status">Статус рейсу</string>
+    <string name="number_of_headquarters">Кількість штаб-квартир</string>
+    <string name="count_of_beds">Кількість спальних місць</string>
+    <string name="number_of_beds">Кількість спальних місць:</string>
+    <string name="number_of_floors">Кількість поверхів</string>
+    <string name="type_of_air_company">Тип авіакомпанії</string>
+    <string name="availability_of_kitchen">Наявність кухні</string>
+    <string name="count_of_floors">Кількість поверхів:</string>
+    <string name="entertainment_room">Наявність розважальної кімнати</string>
+    <string name="price">Ціна:</string>
+
+    <string name="current_list_switched">Поточний список змінено на %s</string>
+    <!-- menu -->
+    <string name="airplane">Літак</string>
+    <string name="aircompany">Авіакомпанія</string>
+    <string name="race">Рейс</string>
+    <string name="airport">Аеропорт</string>
+    <string name="route">Маршрут</string>
+    <string name="team">Екіпаж</string>
+    <string name="headquarters">Штаб-квартира</string>
+    <string name="insurance">Страховка</string>
+    <string name="count_of_movers">Count of movers</string>
+    <string name="have_entertainment_room">Have entertainment room</string>
+    <string name="no_entertainment_room">No entertainment room</string>
+    <string name="kitchen_is_available">Kitchen is available</string>
+    <string name="kitchen_is_disabled">Kitchen is disabled</string>
 </resources>
