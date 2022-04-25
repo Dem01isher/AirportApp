@@ -1,5 +1,6 @@
 package com.leskov.airport.data.repository
 
+import androidx.lifecycle.LiveData
 import com.leskov.airport.data.local.RouteDao
 import com.leskov.airport.domain.entity.RouteEntity
 import javax.inject.Inject
@@ -7,6 +8,8 @@ import javax.inject.Inject
 interface RouteRepository {
 
     fun fetchAllData() : List<RouteEntity?>
+
+    fun findItemByKey(departureCountry: String) : RouteEntity
 
     suspend fun searchData(searchText: String) : List<RouteEntity?>
 
@@ -21,6 +24,8 @@ interface RouteRepository {
     class Base @Inject constructor(private val dao: RouteDao) : RouteRepository{
 
         override fun fetchAllData(): List<RouteEntity?> = dao.fetchAllData()
+
+        override fun findItemByKey(departureCountry: String): RouteEntity = dao.findItemByKey(departureCountry)
 
         override suspend fun searchData(searchText: String): List<RouteEntity?> =
             dao.searchData(searchText)

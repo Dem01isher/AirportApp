@@ -1,11 +1,14 @@
 package com.leskov.airport.data.repository
 
+import androidx.lifecycle.LiveData
 import com.leskov.airport.data.local.InsuranceDao
 import com.leskov.airport.domain.entity.InsuranceEntity
 import javax.inject.Inject
 
 interface InsuranceRepository {
     fun fetchAllData() : List<InsuranceEntity?>
+
+    fun findItemByKey(serviceName: String) : InsuranceEntity
 
     suspend fun searchData(searchText: String) : List<InsuranceEntity?>
 
@@ -20,6 +23,8 @@ interface InsuranceRepository {
     class Base @Inject constructor(private val dao: InsuranceDao) : InsuranceRepository{
 
         override fun fetchAllData(): List<InsuranceEntity?> = dao.fetchAllData()
+
+        override fun findItemByKey(serviceName: String): InsuranceEntity = dao.findItemByKey(serviceName)
 
         override suspend fun searchData(searchText: String): List<InsuranceEntity?> =
             dao.searchData(searchText)

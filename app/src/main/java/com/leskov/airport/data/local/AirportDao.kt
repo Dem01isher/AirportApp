@@ -1,5 +1,6 @@
 package com.leskov.airport.data.local
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.leskov.airport.domain.entity.AirportEntity
 import java.util.ArrayList
@@ -10,7 +11,10 @@ interface AirportDao {
     @Query("SELECT * FROM airport")
     fun fetchAllData() : List<AirportEntity?>
 
-    @Query("SELECT * FROM airport WHERE title LIKE :searchText OR title LIKE :searchText OR city LIKE :searchText")
+    @Query("SELECT * FROM airport WHERE title LIKE:title")
+    fun findItemByKey(title: String) : AirportEntity
+
+    @Query("SELECT * FROM airport WHERE title LIKE :searchText OR city LIKE :searchText")
     suspend fun searchData(searchText: String) : List<AirportEntity?>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE, entity = AirportEntity::class)

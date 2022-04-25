@@ -1,13 +1,15 @@
 package com.leskov.airport.data.repository
 
+import androidx.lifecycle.LiveData
 import com.leskov.airport.data.local.RaceDao
 import com.leskov.airport.domain.entity.RaceEntity
-import java.util.ArrayList
 import javax.inject.Inject
 
 interface RaceRepository {
 
     fun fetchAllData() : List<RaceEntity?>
+
+    fun findItemByKey(typeOfRace: String) : RaceEntity
 
     suspend fun searchData(searchText: String) : List<RaceEntity?>
 
@@ -21,6 +23,8 @@ interface RaceRepository {
 
     class Base @Inject constructor(private val dao: RaceDao) : RaceRepository{
         override fun fetchAllData(): List<RaceEntity?> = dao.fetchAllData()
+
+        override fun findItemByKey(typeOfRace: String): RaceEntity = dao.findItemByKey(typeOfRace)
 
         override suspend fun searchData(searchText: String): List<RaceEntity?> =
             dao.searchData(searchText)

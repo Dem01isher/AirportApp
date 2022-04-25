@@ -1,13 +1,18 @@
 package com.leskov.airport.data.local
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.leskov.airport.domain.entity.InsuranceEntity
+import java.util.ArrayList
 
 @Dao
 interface InsuranceDao {
 
     @Query("SELECT * FROM insurance")
     fun fetchAllData() : List<InsuranceEntity?>
+
+    @Query("SELECT * FROM insurance WHERE serviceName LIKE:serviceName")
+    fun findItemByKey(serviceName: String) : InsuranceEntity
 
     @Query("SELECT * FROM insurance WHERE serviceName LIKE :searchText OR typeOf LIKE :searchText")
     suspend fun searchData(searchText: String) : List<InsuranceEntity?>

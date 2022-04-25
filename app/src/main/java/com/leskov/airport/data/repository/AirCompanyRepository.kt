@@ -1,13 +1,15 @@
 package com.leskov.airport.data.repository
 
+import androidx.lifecycle.LiveData
 import com.leskov.airport.data.local.AirCompanyDao
 import com.leskov.airport.domain.entity.AirCompanyEntity
-import com.leskov.airport.domain.entity.AirplaneEntity
 import javax.inject.Inject
 
 interface AirCompanyRepository {
 
     fun fetchAllData() : List<AirCompanyEntity?>
+
+    fun findItemByKey(name: String) : AirCompanyEntity
 
     suspend fun searchData(searchText: String) : List<AirCompanyEntity?>
 
@@ -21,6 +23,8 @@ interface AirCompanyRepository {
 
     class Base @Inject constructor(private val airCompanyDao: AirCompanyDao) : AirCompanyRepository {
         override fun fetchAllData(): List<AirCompanyEntity?> = airCompanyDao.fetchAllData()
+
+        override fun findItemByKey(name: String): AirCompanyEntity = airCompanyDao.findItemByKey(name)
 
         override suspend fun searchData(searchText: String): List<AirCompanyEntity?> = airCompanyDao.searchData(searchText)
 

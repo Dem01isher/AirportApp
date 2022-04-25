@@ -1,5 +1,6 @@
 package com.leskov.airport.data.repository
 
+import androidx.lifecycle.LiveData
 import com.leskov.airport.data.local.HeadQuarterDao
 import com.leskov.airport.domain.entity.HeadQuarterEntity
 import javax.inject.Inject
@@ -7,6 +8,8 @@ import javax.inject.Inject
 interface HeadQuarterRepository {
 
     fun fetchAllData() : List<HeadQuarterEntity?>
+
+    fun findItemByType(numberOf: Int) : HeadQuarterEntity
 
     suspend fun searchData(searchText: String) : List<HeadQuarterEntity?>
 
@@ -21,6 +24,8 @@ interface HeadQuarterRepository {
     class Base @Inject constructor(private val dao: HeadQuarterDao) : HeadQuarterRepository{
 
         override fun fetchAllData(): List<HeadQuarterEntity?> = dao.fetchAllData()
+
+        override fun findItemByType(numberOf: Int): HeadQuarterEntity = dao.findItemByType(numberOf)
 
         override suspend fun searchData(searchText: String): List<HeadQuarterEntity?> =
             dao.searchData(searchText)

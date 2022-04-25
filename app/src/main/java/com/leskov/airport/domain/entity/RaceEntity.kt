@@ -4,9 +4,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 
-@Entity(tableName = "race")
+@Entity(tableName = "race", primaryKeys = ["typeOfRace", "flightTime"])
 data class RaceEntity(
-    @PrimaryKey(autoGenerate = true)
     val numberOfRace: Int,
     val timeOfDeparture: String,
     val arrivalTime: String,

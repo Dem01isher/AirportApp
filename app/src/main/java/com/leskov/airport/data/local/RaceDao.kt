@@ -1,5 +1,6 @@
 package com.leskov.airport.data.local
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.leskov.airport.domain.entity.RaceEntity
 import java.util.ArrayList
@@ -9,6 +10,9 @@ interface RaceDao {
 
     @Query("SELECT * FROM race")
     fun fetchAllData() : List<RaceEntity?>
+
+    @Query("SELECT * FROM race WHERE typeOfRace LIKE:typeOfRace")
+    fun findItemByKey(typeOfRace: String) : RaceEntity
 
     @Query("SELECT * FROM race WHERE typeOfRace LIKE :searchText OR flightTime LIKE :searchText OR arrivalTime LIKE :searchText")
     suspend fun searchData(searchText: String) : List<RaceEntity?>

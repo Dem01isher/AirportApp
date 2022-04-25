@@ -1,5 +1,6 @@
 package com.leskov.airport.data.repository
 
+import androidx.lifecycle.LiveData
 import com.leskov.airport.data.local.TeamDao
 import com.leskov.airport.domain.entity.TeamEntity
 import javax.inject.Inject
@@ -7,6 +8,8 @@ import javax.inject.Inject
 interface TeamRepository {
 
     fun fetchAllData() : List<TeamEntity?>
+
+    fun findItemByKey(countOfPeople: Int) : TeamEntity
 
     suspend fun searchData(searchText: String) : List<TeamEntity?>
 
@@ -21,6 +24,8 @@ interface TeamRepository {
     class Base @Inject constructor(private val dao: TeamDao) : TeamRepository{
 
         override fun fetchAllData(): List<TeamEntity?> = dao.fetchAllData()
+
+        override fun findItemByKey(countOfPeople: Int): TeamEntity = dao.findItemByKey(countOfPeople)
 
         override suspend fun searchData(searchText: String): List<TeamEntity?> =
             dao.searchData(searchText)

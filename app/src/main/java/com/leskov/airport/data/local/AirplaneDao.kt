@@ -1,5 +1,6 @@
 package com.leskov.airport.data.local
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.leskov.airport.domain.entity.AirplaneEntity
 import java.util.ArrayList
@@ -8,6 +9,9 @@ import java.util.ArrayList
 interface AirplaneDao {
     @Query("SELECT * FROM airplane")
     fun fetchAllData() : List<AirplaneEntity?>
+
+    @Query("SELECT * FROM airplane WHERE producer LIKE:producer")
+    fun findItemByKey(producer: String) : AirplaneEntity
 
     @Query("SELECT * FROM airplane WHERE producer LIKE :searchText OR model LIKE :searchText ")
     suspend fun searchData(searchText: String) : List<AirplaneEntity?>

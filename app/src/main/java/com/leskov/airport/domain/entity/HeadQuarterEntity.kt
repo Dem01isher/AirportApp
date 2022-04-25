@@ -7,8 +7,8 @@ import androidx.room.PrimaryKey
 data class HeadQuarterEntity(
     @PrimaryKey(autoGenerate = false)
     val numberOf:Int,
-    val availabilityOfKitchen: Boolean,
+    val availabilityOfKitchen: String,
     val countOfLevels: Int,
     val numberOfBeds: Int,
-    val entertainmentRoom: Boolean
+    val entertainmentRoom: String
 )

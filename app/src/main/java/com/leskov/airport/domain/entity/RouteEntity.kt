@@ -3,9 +3,8 @@ package com.leskov.airport.domain.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "route")
+@Entity(tableName = "route", primaryKeys = ["status", "departureCountry"])
 data class RouteEntity(
-    @PrimaryKey(autoGenerate = false)
     val numberOf: Int,
     val status: String,
     val departureCountry: String,

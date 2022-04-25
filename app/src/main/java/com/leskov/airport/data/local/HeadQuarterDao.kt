@@ -1,13 +1,18 @@
 package com.leskov.airport.data.local
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.leskov.airport.domain.entity.HeadQuarterEntity
+import java.util.ArrayList
 
 @Dao
 interface HeadQuarterDao {
 
     @Query("SELECT * FROM headquarter")
     fun fetchAllData() : List<HeadQuarterEntity?>
+
+    @Query("SELECT * FROM headquarter WHERE numberOf LIKE:numberOf")
+    fun findItemByType(numberOf: Int) : HeadQuarterEntity
 
     @Query("SELECT * FROM headquarter WHERE numberOf LIKE :searchText OR numberOfBeds LIKE :searchText")
     suspend fun searchData(searchText: String) : List<HeadQuarterEntity?>

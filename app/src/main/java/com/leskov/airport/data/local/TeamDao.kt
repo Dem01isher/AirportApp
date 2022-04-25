@@ -1,13 +1,18 @@
 package com.leskov.airport.data.local
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.leskov.airport.domain.entity.TeamEntity
+import java.util.ArrayList
 
 @Dao
 interface TeamDao {
 
     @Query("SELECT * FROM team")
     fun fetchAllData() : List<TeamEntity?>
+
+    @Query("SELECT * FROM team WHERE countOfPeople LIKE:countOfPeople")
+    fun findItemByKey(countOfPeople: Int) : TeamEntity
 
     @Query("SELECT * FROM team WHERE countOfPeople LIKE :searchText OR countOfPilots LIKE :searchText")
     suspend fun searchData(searchText: String) : List<TeamEntity?>
