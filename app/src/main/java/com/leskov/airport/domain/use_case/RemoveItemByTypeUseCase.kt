@@ -18,6 +18,7 @@ class RemoveItemByTypeUseCase @Inject constructor(
     private var type: String = ""
 
     fun setType(type: String){
+        if (type.isNullOrBlank()) return
         this.type = type
     }
 

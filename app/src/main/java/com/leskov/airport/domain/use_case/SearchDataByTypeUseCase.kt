@@ -2,7 +2,6 @@ package com.leskov.airport.domain.use_case
 
 import com.leskov.airport.data.repository.*
 import com.leskov.airport.domain.entity.TypeOfEntity
-import java.util.ArrayList
 import javax.inject.Inject
 
 class SearchDataByTypeUseCase @Inject constructor(
@@ -18,11 +17,12 @@ class SearchDataByTypeUseCase @Inject constructor(
 
     private var type: String = ""
 
-    fun setType(type: String){
+    fun setType(type: String) {
+        if (type.isNullOrBlank()) return
         this.type = type
     }
 
-    suspend fun searchSelectedTypeData(searchQuery: String) : List<Any?>{
+    suspend fun searchSelectedTypeData(searchQuery: String): List<Any?> {
         return when (type) {
 
             TypeOfEntity.AIRCOMPANY -> airCompanyRepository.searchData(searchQuery)
@@ -41,22 +41,7 @@ class SearchDataByTypeUseCase @Inject constructor(
 
             TypeOfEntity.TEAM -> teamRepository.searchData(searchQuery)
 
-            TypeOfEntity.FETCH_ALL_DATA -> fetchAllData()
-
-            else -> fetchAllData()
+            else -> emptyList()
         }
-    }
-
-    private fun fetchAllData() : ArrayList<Any?> {
-        val currentList : ArrayList<Any?> = arrayListOf()
-        currentList.addAll(airCompanyRepository.fetchAllData())
-        currentList.addAll(airplaneRepository.fetchAllData())
-        currentList.addAll(airportRepository.fetchAllData())
-        currentList.addAll(raceRepository.fetchAllData())
-        currentList.addAll(headQuarterRepository.fetchAllData())
-        currentList.addAll(insuranceRepository.fetchAllData())
-        currentList.addAll(routeRepository.fetchAllData())
-        currentList.addAll(teamRepository.fetchAllData())
-        return currentList
     }
 }

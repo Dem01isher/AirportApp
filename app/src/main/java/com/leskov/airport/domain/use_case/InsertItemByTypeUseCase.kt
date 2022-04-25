@@ -17,12 +17,12 @@ class InsertItemByTypeUseCase @Inject constructor(
     private var type: String = ""
 
     fun setType(type: String){
+        if (type.isNullOrBlank()) return
         this.type = type
     }
 
     suspend fun insertItemByType(item: Any?){
         when (type) {
-
             TypeOfEntity.AIRCOMPANY -> airCompanyRepository.insertItem(item as AirCompanyEntity)
 
             TypeOfEntity.AIRPORT -> airportRepository.insertItem(item as AirportEntity)
@@ -38,10 +38,6 @@ class InsertItemByTypeUseCase @Inject constructor(
             TypeOfEntity.ROUTE -> routeRepository.insertItem(item as RouteEntity)
 
             TypeOfEntity.TEAM -> teamRepository.insertItem(item as TeamEntity)
-
-            else -> {
-                // something
-            }
         }
     }
 }

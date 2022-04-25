@@ -18,12 +18,12 @@ class UpdateItemByTypeUseCase @Inject constructor(
     private var type: String = ""
 
     fun setType(type: String){
+        if (type.isNullOrBlank()) return
         this.type = type
     }
 
     suspend fun updateSelectedTypeItem(item: Any?){
         when (type){
-
             TypeOfEntity.AIRCOMPANY -> airCompanyRepository.updateItem(item as AirCompanyEntity)
 
             TypeOfEntity.AIRPLANE -> airplaneRepository.updateItem(item as AirplaneEntity)

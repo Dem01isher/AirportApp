@@ -2,7 +2,6 @@ package com.leskov.airport.domain.use_case
 
 import com.leskov.airport.data.repository.*
 import com.leskov.airport.domain.entity.TypeOfEntity
-import java.util.ArrayList
 import javax.inject.Inject
 
 class SelectListTypeUseCase @Inject constructor(
@@ -18,7 +17,8 @@ class SelectListTypeUseCase @Inject constructor(
 
     private var type: String = ""
 
-    fun setType(type: String){
+    fun setType(type: String) {
+        if (type.isNullOrBlank()) return
         this.type = type
     }
 
@@ -41,22 +41,7 @@ class SelectListTypeUseCase @Inject constructor(
 
             TypeOfEntity.TEAM -> teamRepository.fetchAllData()
 
-            TypeOfEntity.FETCH_ALL_DATA -> fetchAllData()
-
-            else -> fetchAllData()
+            else -> emptyList()
         }
-    }
-
-    private fun fetchAllData() : ArrayList<Any?>{
-        val currentList : ArrayList<Any?> = arrayListOf()
-        currentList.addAll(airCompanyRepository.fetchAllData())
-        currentList.addAll(airplaneRepository.fetchAllData())
-        currentList.addAll(airportRepository.fetchAllData())
-        currentList.addAll(raceRepository.fetchAllData())
-        currentList.addAll(headQuarterRepository.fetchAllData())
-        currentList.addAll(insuranceRepository.fetchAllData())
-        currentList.addAll(routeRepository.fetchAllData())
-        currentList.addAll(teamRepository.fetchAllData())
-        return currentList
     }
 }
