@@ -11,20 +11,20 @@ class MainMenuAdapter : BaseListAdapter<MainMenuModel, ListItemMenuBinding>() {
     override val layoutId: Int
         get() = R.layout.list_item_menu
 
-    private var onClickListener : ((String) -> Unit)? = null
+    private var onClickListener : ((MainMenuModel) -> Unit)? = null
 
     override fun onViewHolderCreated(binding: ListItemMenuBinding, position: Int) {
         val menu = getItem(position)
 
-        binding.btnMenu.title.text = menu.title
+        binding.btnMenu.title.setText(menu.titleRes)
         binding.btnMenu.icon.setImageResource(menu.icon)
 
         binding.btnMenu.crRoot.setOnClickWithDebounce {
-            onClickListener?.invoke(menu.title)
+            onClickListener?.invoke(menu)
         }
     }
 
-    fun onItemClickListener(listener: (String) -> Unit){
+    fun onItemClickListener(listener: (MainMenuModel) -> Unit){
         onClickListener = listener
     }
 }

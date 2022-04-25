@@ -32,15 +32,12 @@ class MainMenuFragment : BaseBindingFragment<FragmentMainMenuBinding>() {
         binding.lvMenu.setHasFixedSize(true)
 
         binding.toolbar.setOnMenuItemClickListener {
-
-            val icon = if (sharedPreferenceManager.language == Languages.UKR) R.drawable.ic_ukraine_flag else R.drawable.ic_united_kingdom_flag
-
             when (it.itemId) {
                 R.id.show_more_menu -> {
                     showAlertDialogWithList(
                         getString(R.string.choose_language),
                         listOfLanguages,
-                        icon
+                        if (sharedPreferenceManager.language == Languages.UKR) R.drawable.ic_ukraine_flag else R.drawable.ic_united_kingdom_flag
                     ) { position ->
                         when (position){
                             0 -> {
@@ -65,7 +62,7 @@ class MainMenuFragment : BaseBindingFragment<FragmentMainMenuBinding>() {
         menuAdapter.onItemClickListener {
             navController.navigate(
                 R.id.action_mainMenuFragment_to_listOfItemsFragment,
-                bundleOf("title" to it)
+                bundleOf("title" to it.title, "type" to it.titleRes)
             )
         }
     }
