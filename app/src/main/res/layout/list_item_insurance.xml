@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <data>
+        <variable
+            name="item"
+            type="com.leskov.airport.domain.entity.InsuranceEntity" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/header_layout"
+                android:foreground="?attr/selectableItemBackground"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:focusable="true"
+                android:clickable="true">
+
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:text="@{item.typeOf}"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:drawableStart="@drawable/ic_race"
+                    android:drawablePadding="8dp"
+                    tools:text="Header" />
+
+                <ImageView
+                    android:id="@+id/arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|end"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="12dp"
+                    android:rotation="270"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/ic_arrow_up" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginVertical="10dp"
+                android:background="@color/black" />
+
+
+            <LinearLayout
+                android:id="@+id/description_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="24dp"
+                        android:gravity="start"
+                        android:text="@string/service_name"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        tools:text="Title" />
+
+                    <TextView
+                        android:id="@+id/type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="@{item.serviceName}"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        tools:text="Type" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="24dp"
+                        android:gravity="start"
+                        android:text="@string/form_of_insurance"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        tools:text="Model" />
+
+                    <TextView
+                        android:id="@+id/form_of_insurance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="@{item.formOfInsurance}"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        tools:text="model" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="24dp"
+                        android:gravity="start"
+                        android:text="@string/term"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        tools:text="Load Capacity" />
+
+                    <TextView
+                        android:id="@+id/load_capacity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="@{item.term}"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        tools:text="Type" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="24dp"
+                        android:gravity="start"
+                        android:text="@string/price"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        tools:text="Load Capacity" />
+
+                    <TextView
+                        android:id="@+id/price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="@{item.price}"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        tools:text="Type" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

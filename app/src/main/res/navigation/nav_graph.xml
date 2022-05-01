@@ -15,6 +15,9 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/action_listOfItemsFragment_to_updateItemFragment"
+            app:destination="@id/updateItemFragment" />
     </fragment>
     <fragment
         android:id="@+id/insertNewItemFragment"
@@ -32,6 +35,10 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
+    <fragment
+        android:id="@+id/updateItemFragment"
+        android:name="com.leskov.airport.presentation.update_item.UpdateItemFragment"
+        android:label="UpdateItemFragment" />
 
 
 </navigation>

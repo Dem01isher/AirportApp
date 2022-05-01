@@ -10,5 +10,6 @@ data class AirCompanyEntity(
     val officeLocation: String,
     val typeOf: String,
     val contactNumber: String,
+    val countOfLanes: Int,
     val dateOfFoundation: String
 ) : Serializable

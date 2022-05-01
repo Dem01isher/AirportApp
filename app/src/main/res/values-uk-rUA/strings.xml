@@ -27,10 +27,12 @@
     <string name="producer_of_airplane">Виробник</string>
     <string name="model">Модель</string>
     <string-array name="type_of_airplanes">
-        <item>Моноплан</item>
-        <item>Біплан</item>
-        <item>Триплан</item>
-        <item>Багатоплан</item>
+        <item>Пасажирські</item>
+        <item>Транспортні</item>
+        <item>Поштові</item>
+        <item>Санітарні</item>
+        <item>Пожежні</item>
+        <item>Навчально-тренувальні</item>
     </string-array>
 
     <!-- Airport -->
@@ -108,4 +110,5 @@
     <string name="no_entertainment_room">No entertainment room</string>
     <string name="kitchen_is_available">Kitchen is available</string>
     <string name="kitchen_is_disabled">Kitchen is disabled</string>
+    <string name="upate">Update</string>
 </resources>

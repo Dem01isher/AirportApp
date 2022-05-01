@@ -30,14 +30,14 @@ fun View.updateVisibility(isVisible: Boolean) {
     if (isVisible) this.visibility = View.VISIBLE else this.visibility = View.GONE
 }
 
-fun View.setOnClickWithDebounce(debounceTime: Long = 600L, action: () -> Unit) {
+fun View.setOnClickWithDebounce(debounceTime: Long = 600L, action: (View) -> Unit) {
 
     this.setOnClickListener(object : View.OnClickListener {
         private var lastClickTime: Long = 0
 
         override fun onClick(v: View) {
             if (SystemClock.elapsedRealtime() - lastClickTime < debounceTime) return
-            else action()
+            else action.invoke(v)
             lastClickTime = SystemClock.elapsedRealtime()
         }
     })
@@ -50,14 +50,10 @@ fun EditText.showKeyboard(activity: Activity){
 }
 
 fun Fragment.hideKeyboard() {
-    val imm = requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-    //Find the currently focused view, so we can grab the correct window token from it.
-    var view = requireActivity().currentFocus
-    //If no view currently has focus, create a new one, just so we can grab a window token from it
-    if (view == null) {
-        view = View(activity)
-    }
-    imm.hideSoftInputFromWindow(view.windowToken, 0)
+    val view = requireActivity().currentFocus
+    val inputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+    inputMethodManager?.hideSoftInputFromWindow(view?.windowToken, 0)
+    view?.clearFocus()
 }
 
 fun Fragment.showMessage(text: String, duration: Int = Toast.LENGTH_SHORT) {
@@ -158,7 +154,7 @@ fun EditText.onSearchQueryListener(listener: (String) -> Unit){
             if (p0 != null) listener.invoke(p0.toString())
         }
 
-        override fun afterTextChanged(p0: Editable?) {}
+        override fun afterTextChanged(p0: Editable?) { listener.invoke(p0.toString()) }
     })
 }
 

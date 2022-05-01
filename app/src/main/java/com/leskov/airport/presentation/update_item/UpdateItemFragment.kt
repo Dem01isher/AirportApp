@@ -1,141 +1,34 @@
-package com.leskov.airport.presentation.insert_new_item
+package com.leskov.airport.presentation.update_item
 
-import android.telephony.PhoneNumberFormattingTextWatcher
-import android.text.InputType
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import com.leskov.airport.R
 import com.leskov.airport.base.extensions.*
 import com.leskov.airport.base.fragment.BaseVMFragment
-import com.leskov.airport.base.utils.helper.PhoneTextFormatter
-import com.leskov.airport.databinding.FragmentInsertNewItemBinding
+import com.leskov.airport.databinding.FragmentUpdateItemBinding
 import com.leskov.airport.domain.entity.*
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class InsertNewItemFragment :
-    BaseVMFragment<InsertNewItemViewModel, FragmentInsertNewItemBinding>() {
+class UpdateItemFragment : BaseVMFragment<UpdateItemViewModel, FragmentUpdateItemBinding>() {
 
-    override val layoutId: Int = R.layout.fragment_insert_new_item
+    override val layoutId: Int = R.layout.fragment_update_item
 
-    override val viewModel: InsertNewItemViewModel by viewModels()
+    override val viewModel: UpdateItemViewModel by viewModels()
 
-    private var loadedItem: Any? = null
+    private lateinit var loadedItem: Any
 
     override fun initListeners() {
         super.initListeners()
 
+        viewModel.setType(arguments?.getString("type") ?: "")
+
+        viewModel.getItemByKey(arguments?.get("key"))
+
         binding.toolbar.title = arguments?.getString("type") ?: ""
 
-        binding.btnConfirm.title.setText(R.string.confirm)
+        binding.btnConfirm.title.setText(R.string.upate)
 
-        when (arguments?.getString("type") ?: "") {
-            TypeOfEntity.AIRPLANE -> {
-                binding.title.inputType = InputType.TYPE_CLASS_NUMBER
-                binding.headlineLayout.hint = getString(R.string.number_of_airplane)
-                binding.producerLayout.updateVisibility(true)
-                binding.producerLayout.hint = getString(R.string.producer_of_airplane)
-                initSelectedTypeList(
-                    binding.tvSelectedType,
-                    resources.getStringArray(R.array.type_of_airplanes).toList()
-                )
-                binding.modelLayout.hint = getString(R.string.model)
-                binding.capacityLayout.hint = getString(R.string.capacity)
-            }
-            TypeOfEntity.RACE -> {
-                binding.capacity.inputType = InputType.TYPE_CLASS_NUMBER
-                binding.headlineLayout.hint = getString(R.string.type_of_race)
-                binding.timeTitle.text = getString(R.string.arrival_time)
-                binding.capacityLayout.hint = getString(R.string.number_of_race)
-                binding.groupDate.updateVisibility(false)
-                binding.modelLayout.hint = getString(R.string.departure_time)
-                binding.producerLayout.updateVisibility(true)
-                binding.producerLayout.hint = getString(R.string.flight_time)
-            }
-            TypeOfEntity.AIRCOMPANY -> {
-                binding.groupTime.updateVisibility(true)
-                binding.timeTitle.text = getString(R.string.count_of_lanes)
-                binding.timePickerLayout.minute.updateVisibility(false)
-                binding.timePickerLayout.hoursLayout.hint = ""
-                binding.timePickerLayout.dotsDivider.updateVisibility(false)
-                binding.groupDate.updateVisibility(true)
-                initSelectedTypeList(binding.tvSelectedType, resources.getStringArray(R.array.type_of_airlines).toList())
-                binding.headlineLayout.hint = getString(R.string.name)
-                binding.typeLayout.hint = getString(R.string.airline_type)
-                binding.modelLayout.hint = getString(R.string.office_location)
-                binding.dateTitle.text = getString(R.string.foundation_date)
-                binding.capacityLayout.hint = getString(R.string.contact_number)
-                binding.capacity.inputType = InputType.TYPE_CLASS_PHONE
-            }
-            TypeOfEntity.AIRPORT -> {
-                binding.groupTime.updateVisibility(true)
-                binding.typeLayout.updateVisibility(false)
-                binding.headlineLayout.hint = getString(R.string.name_of_airport)
-                binding.modelLayout.hint = getString(R.string.country_location)
-                binding.capacityLayout.hint = getString(R.string.city)
-                binding.timeTitle.text =
-                    getString(R.string.count_of_lanes) + " & " + getString(R.string.count_of_terminals)
-                binding.timePickerLayout.hoursLayout.hint = getString(R.string.count_of_terminals)
-                binding.timePickerLayout.minuteLayout.hint = getString(R.string.count_of_lanes)
-
-                binding.title.setText(arguments?.getString("airport_title") ?: "")
-                binding.model.setText(arguments?.getString("airport_location") ?: "")
-                binding.capacity.setText(arguments?.getString("airport_city") ?: "")
-                binding.timePickerLayout.hours.setText(arguments?.getString("airport_terminals") ?: "")
-                binding.timePickerLayout.minute.setText(arguments?.getString("airport_lanes") ?: "")
-            }
-            TypeOfEntity.INSURANCE -> {
-                binding.typeLayout.hint = getString(R.string.type_of_insurance)
-                binding.headlineLayout.hint = getString(R.string.service_name)
-                binding.modelLayout.hint = getString(R.string.service_price)
-                binding.model.inputType = InputType.TYPE_CLASS_NUMBER
-                binding.dateTitle.text = getString(R.string.term)
-                binding.groupTime.updateVisibility(false)
-                binding.producerLayout.updateVisibility(true)
-                binding.producerLayout.hint = getString(R.string.form_of_insurance)
-            }
-            TypeOfEntity.TEAM -> {
-                binding.groupTime.updateVisibility(false)
-                binding.groupDate.updateVisibility(false)
-                binding.headlineLayout.hint = getString(R.string.crew_number)
-                binding.title.inputType = InputType.TYPE_CLASS_NUMBER
-                binding.title.maxEms = 3
-                binding.typeLayout.updateVisibility(false)
-                binding.modelLayout.hint = getString(R.string.number_of_pilots)
-                binding.model.inputType = InputType.TYPE_CLASS_NUMBER
-                binding.capacityLayout.hint = getString(R.string.number_of_flight_attendants)
-                binding.capacity.inputType = InputType.TYPE_CLASS_NUMBER
-                binding.producerLayout.updateVisibility(true)
-                binding.producerLayout.hint = getString(R.string.number_of_engineers)
-                binding.producer.inputType = InputType.TYPE_CLASS_NUMBER
-            }
-            TypeOfEntity.ROUTE -> {
-                binding.groupDate.updateVisibility(false)
-                binding.headlineLayout.hint = getString(R.string.number_of_route)
-                binding.title.inputType = InputType.TYPE_CLASS_NUMBER
-                binding.typeLayout.updateVisibility(false)
-                binding.modelLayout.hint = getString(R.string.route_status)
-                binding.capacityLayout.hint = getString(R.string.departure_of_country)
-                binding.producerLayout.updateVisibility(true)
-                binding.producerLayout.hint = getString(R.string.destination_country)
-                binding.timeTitle.text = getString(R.string.length)
-                binding.timePickerLayout.minute.updateVisibility(false)
-            }
-            TypeOfEntity.HEADQUARTERS -> {
-                binding.groupDate.updateVisibility(false)
-                binding.groupTime.updateVisibility(false)
-                binding.groupServices.updateVisibility(true)
-                binding.headlineLayout.hint = getString(R.string.number_of_headquarters)
-                binding.title.inputType = InputType.TYPE_CLASS_NUMBER
-                binding.typeLayout.updateVisibility(false)
-                binding.modelLayout.hint = getString(R.string.count_of_beds)
-                binding.model.inputType = InputType.TYPE_CLASS_NUMBER
-                binding.capacityLayout.hint = getString(R.string.number_of_floors)
-                binding.capacity.inputType = InputType.TYPE_CLASS_NUMBER
-            }
-        }
-
-        binding.btnConfirm.root.setOnClickWithDebounce {
+        binding.btnConfirm.crRoot.setOnClickWithDebounce {
             when (arguments?.getString("type") ?: "") {
 
                 TypeOfEntity.AIRCOMPANY -> {
@@ -151,14 +44,14 @@ class InsertNewItemFragment :
                         )
                     ) {
                         loadedItem = AirCompanyEntity(
-                            binding.title.text.toString(),
-                            binding.model.text.toString(),
-                            binding.tvSelectedType.text.toString(),
+                            nameOf = binding.title.text.toString(),
+                            officeLocation = binding.model.text.toString(),
+                            typeOf = binding.tvSelectedType.text.toString(),
                             dateOfFoundation = "${binding.datePickerLayout.day.text}:${binding.datePickerLayout.month.text}:${binding.datePickerLayout.year.text}",
                             contactNumber = binding.capacity.text.toString(),
                             countOfLanes = binding.timePickerLayout.hours.text.toString().toInt()
                         )
-                        viewModel.insertNewItem(loadedItem)
+                        viewModel.updateSelectedTypeData(loadedItem)
                     } else return@setOnClickWithDebounce
                 }
 
@@ -180,7 +73,7 @@ class InsertNewItemFragment :
                                 .toInt(),
                             numberOfLanes = binding.timePickerLayout.minute.text.toString().toInt()
                         )
-                        viewModel.insertNewItem(loadedItem)
+                        viewModel.updateSelectedTypeData(loadedItem)
                     } else return@setOnClickWithDebounce
                 }
                 TypeOfEntity.AIRPLANE -> {
@@ -199,7 +92,7 @@ class InsertNewItemFragment :
                             model = binding.model.text.toString(),
                             loadCapacity = binding.capacity.text.toString(),
                         )
-                        viewModel.insertNewItem(loadedItem)
+                        viewModel.updateSelectedTypeData(loadedItem)
                     } else return@setOnClickWithDebounce
                 }
                 TypeOfEntity.RACE -> {
@@ -220,7 +113,7 @@ class InsertNewItemFragment :
                             flightTime = binding.producer.text.toString(),
                             typeOfRace = binding.title.text.toString()
                         )
-                        viewModel.insertNewItem(loadedItem)
+                        viewModel.updateSelectedTypeData(loadedItem)
                     } else return@setOnClickWithDebounce
                 }
                 TypeOfEntity.INSURANCE -> {
@@ -241,7 +134,7 @@ class InsertNewItemFragment :
                             term = "${binding.datePickerLayout.day.text}:${binding.datePickerLayout.month.text}:${binding.datePickerLayout.year.text}",
                             formOfInsurance = binding.producer.text.toString()
                         )
-                        viewModel.insertNewItem(loadedItem)
+                        viewModel.updateSelectedTypeData(loadedItem)
                     } else return@setOnClickWithDebounce
                 }
                 TypeOfEntity.TEAM -> {
@@ -264,7 +157,7 @@ class InsertNewItemFragment :
                             countFlightAttendants = binding.capacity.text.toString().toInt(),
                             numberOfMovers = binding.producer.text.toString().toInt()
                         )
-                        viewModel.insertNewItem(loadedItem)
+                        viewModel.updateSelectedTypeData(loadedItem)
                     } else return@setOnClickWithDebounce
                 }
                 TypeOfEntity.ROUTE -> {
@@ -284,7 +177,7 @@ class InsertNewItemFragment :
                             destinationCountry = binding.producer.text.toString(),
                             binding.timePickerLayout.hours.text.toString()
                         )
-                        viewModel.insertNewItem(loadedItem)
+                        viewModel.updateSelectedTypeData(loadedItem)
                     } else return@setOnClickWithDebounce
                 }
                 TypeOfEntity.HEADQUARTERS -> {
@@ -297,7 +190,7 @@ class InsertNewItemFragment :
                             numberOfBeds = binding.model.text.toString().toInt(),
                             entertainmentRoom = if (binding.cbEntertainmentRoom.isChecked) getString(R.string.have_entertainment_room) else getString(R.string.no_entertainment_room)
                         )
-                        viewModel.insertNewItem(loadedItem)
+                        viewModel.updateSelectedTypeData(loadedItem)
                     } else return@setOnClickWithDebounce
                 }
                 else -> {
@@ -312,8 +205,75 @@ class InsertNewItemFragment :
         }
     }
 
+    override fun initObservers() {
+        super.initObservers()
+
+        viewModel.selectedType.nonNullObserve(viewLifecycleOwner){
+            
+        }
+
+        viewModel.updateItem.nonNullObserve(viewLifecycleOwner){
+            when (arguments?.getString("type") ?: ""){
+                TypeOfEntity.AIRPLANE -> {
+                    val key = it as AirplaneEntity
+                    binding.producer.setText(key.producer)
+                    binding.title.setText(key.number)
+                    binding.tvSelectedType.setText(key.type)
+                    binding.model.setText(key.model)
+                    binding.capacity.setText(key.loadCapacity)
+                }
+                TypeOfEntity.AIRPORT -> {
+                    val key = it as AirportEntity
+                    binding.title.setText(key.title)
+                    binding.model.setText(key.countryLocation)
+                    binding.capacity.setText(key.city)
+                    binding.timePickerLayout.hours.setText(key.countOfTerminals)
+                    binding.timePickerLayout.minute.setText(key.numberOfLanes)
+                }
+                TypeOfEntity.RACE -> {
+                    val key = it as RaceEntity
+                    binding.capacity.setText(key.numberOfRace)
+                    binding.model.setText(key.timeOfDeparture)
+                    binding.producer.setText(key.flightTime)
+                    binding.title.setText(key.typeOfRace)
+                }
+                TypeOfEntity.TEAM -> {
+                    val key = it as TeamEntity
+                    binding.title.setText(key.numberOf)
+                    binding.model.setText(key.countOfPilots)
+                    binding.producer.setText(key.countOfEngineers)
+                    binding.capacity.setText(key.countFlightAttendants)
+                    binding.producer.setText(key.numberOfMovers)
+                }
+                TypeOfEntity.INSURANCE -> {
+                    val key = it as InsuranceEntity
+
+                }
+                TypeOfEntity.HEADQUARTERS -> {
+                    val key = it as HeadQuarterEntity
+                    binding.title.setText(key.numberOf)
+                    binding.capacity.setText(key.countOfLevels)
+                    binding.model.setText(key.numberOfBeds)
+                }
+                TypeOfEntity.ROUTE -> {
+                    val key = it as RouteEntity
+                    binding.title.setText(key.numberOf)
+                    binding.model.setText(key.status)
+                    binding.capacity.setText(key.departureCountry)
+                    binding.producer.setText(key.destinationCountry)
+                    binding.timePickerLayout.hours.setText(key.length)
+                }
+                TypeOfEntity.AIRCOMPANY -> {
+                    val key = it as AirCompanyEntity
+                    binding.title.setText(key.nameOf)
+                    binding.model.setText(key.officeLocation)
+                }
+            }
+        }
+    }
+
     override fun onPause() {
         super.onPause()
-        hideKeyboard()
+        viewModel.updateItem.removeObservers(viewLifecycleOwner)
     }
 }

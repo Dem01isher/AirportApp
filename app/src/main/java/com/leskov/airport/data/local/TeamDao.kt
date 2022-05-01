@@ -14,7 +14,7 @@ interface TeamDao {
     @Query("SELECT * FROM team WHERE countOfPeople LIKE:countOfPeople")
     fun findItemByKey(countOfPeople: Int) : TeamEntity
 
-    @Query("SELECT * FROM team WHERE countOfPeople LIKE :searchText OR countOfPilots LIKE :searchText")
+    @Query("SELECT * FROM team WHERE countOfPilots LIKE '%' || :searchText|| '%' OR numberOf LIKE '%' || :searchText|| '%' ")
     suspend fun searchData(searchText: String) : List<TeamEntity?>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE, entity = TeamEntity::class)

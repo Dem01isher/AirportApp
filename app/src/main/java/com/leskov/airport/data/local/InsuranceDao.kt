@@ -14,7 +14,7 @@ interface InsuranceDao {
     @Query("SELECT * FROM insurance WHERE serviceName LIKE:serviceName")
     fun findItemByKey(serviceName: String) : InsuranceEntity
 
-    @Query("SELECT * FROM insurance WHERE serviceName LIKE :searchText OR typeOf LIKE :searchText")
+    @Query("SELECT * FROM insurance WHERE serviceName LIKE '%' || :searchText|| '%' OR term LIKE '%' || :searchText|| '%' ")
     suspend fun searchData(searchText: String) : List<InsuranceEntity?>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE, entity = InsuranceEntity::class)

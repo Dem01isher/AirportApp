@@ -13,7 +13,7 @@ interface AirplaneDao {
     @Query("SELECT * FROM airplane WHERE producer LIKE:producer")
     fun findItemByKey(producer: String) : AirplaneEntity
 
-    @Query("SELECT * FROM airplane WHERE producer LIKE :searchText OR model LIKE :searchText ")
+    @Query("SELECT * FROM airplane WHERE producer LIKE '%' || :searchText|| '%' OR model LIKE '%' || :searchText|| '%' ")
     suspend fun searchData(searchText: String) : List<AirplaneEntity?>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE, entity = AirplaneEntity::class)

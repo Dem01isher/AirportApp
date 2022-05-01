@@ -71,7 +71,7 @@ abstract class BaseListAdapter<T, Binding : ViewDataBinding> :
         currentList.clear()
     }
 
-    private class DiffUtilCallbacks<T> : DiffUtil.ItemCallback<T>() {
+    class DiffUtilCallbacks<T> : DiffUtil.ItemCallback<T>() {
 
         override fun areItemsTheSame(oldItem: T, newItem: T): Boolean =
             oldItem == newItem

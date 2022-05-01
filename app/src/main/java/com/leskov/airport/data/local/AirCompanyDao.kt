@@ -14,7 +14,7 @@ interface AirCompanyDao {
     @Query("SELECT * FROM airCompany WHERE nameOf LIKE:name")
     fun findItemByKey(name: String) : AirCompanyEntity
 
-    @Query("SELECT * FROM airCompany WHERE nameOf LIKE :searchText OR officeLocation LIKE :searchText")
+    @Query("SELECT * FROM airCompany WHERE officeLocation LIKE '%' || :searchText|| '%' OR countOfLanes LIKE '%' || :searchText|| '%' ")
     suspend fun searchData(searchText: String) : List<AirCompanyEntity?>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE, entity = AirCompanyEntity::class)

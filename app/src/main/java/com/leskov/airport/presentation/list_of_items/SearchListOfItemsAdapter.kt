@@ -10,7 +10,7 @@ import com.leskov.airport.databinding.*
 import com.leskov.airport.domain.entity.*
 import java.util.*
 
-class ListOfItemsAdapter : ListAdapter<Any?, BaseViewHolder>(BaseListAdapter.DiffUtilCallbacks()) {
+class SearchListOfItemsAdapter : ListAdapter<Any?, BaseViewHolder>(BaseListAdapter.DiffUtilCallbacks()) {
 
     companion object {
         private const val AIR_COMPANY_VIEW_HOLDER = 0

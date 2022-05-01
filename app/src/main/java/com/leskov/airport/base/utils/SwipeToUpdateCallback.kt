@@ -8,14 +8,14 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.leskov.airport.R
 
-abstract class SwipeToDeleteCallback(context: Context) :
-    ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+abstract class SwipeToUpdateCallback(context: Context) :
+    ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
 
-    private val deleteIcon = ContextCompat.getDrawable(context, R.drawable.ic_delete)
+    private val deleteIcon = ContextCompat.getDrawable(context, R.drawable.ic_edit)
     private val intrinsicWidth = deleteIcon?.intrinsicWidth
     private val intrinsicHeight = deleteIcon?.intrinsicHeight
     private val background = ColorDrawable()
-    private val backgroundColor = Color.RED
+    private val backgroundColor = Color.GREEN
     private val clearPaint = Paint().apply { xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR) }
 
     override fun getMovementFlags(

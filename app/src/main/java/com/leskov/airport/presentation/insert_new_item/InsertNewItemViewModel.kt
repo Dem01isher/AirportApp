@@ -12,8 +12,7 @@ class InsertNewItemViewModel @Inject constructor(private val insertItemByTypeUse
     BaseViewModel() {
 
     fun setType(type: String){
-        if (type.isEmpty()) return
-        insertItemByTypeUseCase.setType(type)
+        insertItemByTypeUseCase.selectType(type)
     }
 
     fun insertNewItem(item: Any?) {

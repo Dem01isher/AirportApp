@@ -14,7 +14,7 @@ interface HeadQuarterDao {
     @Query("SELECT * FROM headquarter WHERE numberOf LIKE:numberOf")
     fun findItemByType(numberOf: Int) : HeadQuarterEntity
 
-    @Query("SELECT * FROM headquarter WHERE numberOf LIKE :searchText OR numberOfBeds LIKE :searchText")
+    @Query("SELECT * FROM headquarter WHERE countOfLevels LIKE '%' || :searchText|| '%' OR numberOfBeds LIKE '%' || :searchText|| '%' ")
     suspend fun searchData(searchText: String) : List<HeadQuarterEntity?>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE, entity = HeadQuarterEntity::class)

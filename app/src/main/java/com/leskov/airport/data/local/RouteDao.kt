@@ -14,7 +14,7 @@ interface RouteDao {
     @Query("SELECT * FROM route WHERE departureCountry LIKE:departureCountry")
     fun findItemByKey(departureCountry: String) : RouteEntity
 
-    @Query("SELECT * FROM route WHERE destinationCountry LIKE :searchText OR departureCountry LIKE :searchText")
+    @Query("SELECT * FROM route WHERE status LIKE '%' || :searchText|| '%' OR departureCountry LIKE '%' || :searchText|| '%' ")
     suspend fun searchData(searchText: String) : List<RouteEntity?>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE, entity = RouteEntity::class)

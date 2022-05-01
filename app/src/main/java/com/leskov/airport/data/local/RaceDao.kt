@@ -14,7 +14,7 @@ interface RaceDao {
     @Query("SELECT * FROM race WHERE typeOfRace LIKE:typeOfRace")
     fun findItemByKey(typeOfRace: String) : RaceEntity
 
-    @Query("SELECT * FROM race WHERE typeOfRace LIKE :searchText OR flightTime LIKE :searchText OR arrivalTime LIKE :searchText")
+    @Query("SELECT * FROM race WHERE typeOfRace LIKE '%' || :searchText|| '%' OR numberOfRace LIKE '%' || :searchText|| '%' ")
     suspend fun searchData(searchText: String) : List<RaceEntity?>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE, entity = RaceEntity::class)

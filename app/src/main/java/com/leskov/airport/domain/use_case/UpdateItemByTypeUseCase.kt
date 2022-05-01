@@ -15,9 +15,9 @@ class UpdateItemByTypeUseCase @Inject constructor(
     private val teamRepository: TeamRepository
 ) {
 
-    private var type: String = ""
+    var type: String = ""
 
-    fun setType(type: String){
+    fun selectType(type: String){
         if (type.isNullOrBlank()) return
         this.type = type
     }

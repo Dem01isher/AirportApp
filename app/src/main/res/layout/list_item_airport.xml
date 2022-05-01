@@ -77,6 +77,7 @@
                         android:layout_height="match_parent"
                         android:visibility="gone"
                         android:orientation="vertical"
+                        tools:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -98,6 +99,7 @@
                                 android:gravity="start"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
+                                android:text="@string/city"
                                 tools:text="City" />
 
                             <TextView
@@ -153,10 +155,40 @@
                                 android:gravity="start"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
+                                android:text="@string/count_of_terminals"
                                 tools:text="Count of terminals" />
 
                             <TextView
                                 android:id="@+id/count_of_terminals"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="start"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                tools:text="5" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="12dp">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="24dp"
+                                android:gravity="start"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:text="@string/count_of_lanes"
+                                tools:text="Count of terminals" />
+
+                            <TextView
+                                android:id="@+id/count_of_lanes"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="start"

@@ -124,6 +124,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar_layout" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_search_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            android:background="#C3C3C3"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_layout" />
+
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fl_add_item"

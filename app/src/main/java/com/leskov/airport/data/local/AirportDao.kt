@@ -14,7 +14,7 @@ interface AirportDao {
     @Query("SELECT * FROM airport WHERE title LIKE:title")
     fun findItemByKey(title: String) : AirportEntity
 
-    @Query("SELECT * FROM airport WHERE title LIKE :searchText OR city LIKE :searchText")
+    @Query("SELECT * FROM airport WHERE countryLocation LIKE '%' || :searchText|| '%' OR countOfTerminals LIKE '%' || :searchText|| '%' ")
     suspend fun searchData(searchText: String) : List<AirportEntity?>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE, entity = AirportEntity::class)

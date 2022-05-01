@@ -27,10 +27,12 @@
     <string name="producer_of_airplane">Producer</string>
     <string name="model">Model</string>
     <string-array name="type_of_airplanes">
-        <item>Monoplanes</item>
-        <item>Biplanes</item>
-        <item>Triplanes</item>
-        <item>Multiplanes</item>
+        <item>Passenger</item>
+        <item>Transport</item>
+        <item>Postal</item>
+        <item>Sanitary</item>
+        <item>Firefighters</item>
+        <item>Training</item>
     </string-array>
 
     <!-- Airport -->
@@ -108,4 +110,7 @@
     <string name="no_entertainment_room">No entertainment room</string>
     <string name="kitchen_is_available">Kitchen is available</string>
     <string name="kitchen_is_disabled">Kitchen is disabled</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="upate">Update</string>
 </resources>
