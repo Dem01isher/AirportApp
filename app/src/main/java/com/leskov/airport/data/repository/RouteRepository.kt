@@ -7,11 +7,11 @@ import javax.inject.Inject
 
 interface RouteRepository {
 
-    fun fetchAllData() : List<RouteEntity?>
+    fun fetchAllData() : LiveData<List<RouteEntity?>>
 
     fun findItemByKey(departureCountry: String) : RouteEntity
 
-    suspend fun searchData(searchText: String) : List<RouteEntity?>
+    fun searchData(searchText: String) : LiveData<List<RouteEntity?>>
 
     suspend fun insertItem(item: RouteEntity)
 
@@ -23,11 +23,11 @@ interface RouteRepository {
 
     class Base @Inject constructor(private val dao: RouteDao) : RouteRepository{
 
-        override fun fetchAllData(): List<RouteEntity?> = dao.fetchAllData()
+        override fun fetchAllData(): LiveData<List<RouteEntity?>> = dao.fetchAllData()
 
         override fun findItemByKey(departureCountry: String): RouteEntity = dao.findItemByKey(departureCountry)
 
-        override suspend fun searchData(searchText: String): List<RouteEntity?> =
+        override fun searchData(searchText: String): LiveData<List<RouteEntity?>> =
             dao.searchData(searchText)
 
         override suspend fun insertItem(item: RouteEntity) = dao.insertItem(item)

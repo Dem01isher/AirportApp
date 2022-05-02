@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="airport"
+            type="com.leskov.airport.domain.entity.AirportEntity" />
+    </data>
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_container"
             android:layout_width="match_parent"
@@ -45,6 +51,7 @@
                         android:gravity="start"
                         android:textColor="@color/black"
                         android:textSize="18sp"
+                        android:text="@{airport.title}"
                         android:drawableStart="@drawable/ic_airport"
                         android:drawablePadding="8dp"
                         android:textStyle="bold"
@@ -107,6 +114,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="start"
+                                android:text="@{String.valueOf(airport.city)}"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
                                 tools:text="Kyiv" />
@@ -135,6 +143,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="start"
+                                android:text="@{String.valueOf(airport.countryLocation)}"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
                                 tools:text="location" />
@@ -163,6 +172,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="start"
+                                android:text="@{String.valueOf(airport.countOfTerminals)}"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
                                 tools:text="5" />
@@ -192,6 +202,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="start"
+                                android:text="@{String.valueOf(airport.numberOfLanes)}"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
                                 tools:text="5" />

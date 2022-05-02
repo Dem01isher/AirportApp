@@ -9,13 +9,13 @@ import java.util.ArrayList
 interface RouteDao {
 
     @Query("SELECT * FROM route")
-    fun fetchAllData() : List<RouteEntity?>
+    fun fetchAllData() : LiveData<List<RouteEntity?>>
 
     @Query("SELECT * FROM route WHERE departureCountry LIKE:departureCountry")
     fun findItemByKey(departureCountry: String) : RouteEntity
 
     @Query("SELECT * FROM route WHERE status LIKE '%' || :searchText|| '%' OR departureCountry LIKE '%' || :searchText|| '%' ")
-    suspend fun searchData(searchText: String) : List<RouteEntity?>
+    fun searchData(searchText: String) : LiveData<List<RouteEntity?>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE, entity = RouteEntity::class)
     suspend fun insertItem(item: RouteEntity)

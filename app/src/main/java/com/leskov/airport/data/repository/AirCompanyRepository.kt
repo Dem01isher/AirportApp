@@ -7,11 +7,11 @@ import javax.inject.Inject
 
 interface AirCompanyRepository {
 
-    fun fetchAllData() : List<AirCompanyEntity?>
+    fun fetchAllData() : LiveData<List<AirCompanyEntity?>>
 
     fun findItemByKey(name: String) : AirCompanyEntity
 
-    suspend fun searchData(searchText: String) : List<AirCompanyEntity?>
+    fun searchData(searchText: String) : LiveData<List<AirCompanyEntity?>>
 
     suspend fun insertItem(item: AirCompanyEntity)
 
@@ -22,11 +22,11 @@ interface AirCompanyRepository {
     suspend fun removeAllItems()
 
     class Base @Inject constructor(private val airCompanyDao: AirCompanyDao) : AirCompanyRepository {
-        override fun fetchAllData(): List<AirCompanyEntity?> = airCompanyDao.fetchAllData()
+        override fun fetchAllData(): LiveData<List<AirCompanyEntity?>> = airCompanyDao.fetchAllData()
 
         override fun findItemByKey(name: String): AirCompanyEntity = airCompanyDao.findItemByKey(name)
 
-        override suspend fun searchData(searchText: String): List<AirCompanyEntity?> = airCompanyDao.searchData(searchText)
+        override fun searchData(searchText: String): LiveData<List<AirCompanyEntity?>> = airCompanyDao.searchData(searchText)
 
         override suspend fun insertItem(item: AirCompanyEntity) = airCompanyDao.insertItem(item)
 

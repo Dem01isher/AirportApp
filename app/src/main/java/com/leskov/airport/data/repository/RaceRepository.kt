@@ -7,11 +7,11 @@ import javax.inject.Inject
 
 interface RaceRepository {
 
-    fun fetchAllData() : List<RaceEntity?>
+    fun fetchAllData() : LiveData<List<RaceEntity?>>
 
     fun findItemByKey(typeOfRace: String) : RaceEntity
 
-    suspend fun searchData(searchText: String) : List<RaceEntity?>
+    fun searchData(searchText: String) : LiveData<List<RaceEntity?>>
 
     suspend fun insertItem(item: RaceEntity)
 
@@ -22,11 +22,11 @@ interface RaceRepository {
     suspend fun removeAllItems()
 
     class Base @Inject constructor(private val dao: RaceDao) : RaceRepository{
-        override fun fetchAllData(): List<RaceEntity?> = dao.fetchAllData()
+        override fun fetchAllData(): LiveData<List<RaceEntity?>> = dao.fetchAllData()
 
         override fun findItemByKey(typeOfRace: String): RaceEntity = dao.findItemByKey(typeOfRace)
 
-        override suspend fun searchData(searchText: String): List<RaceEntity?> =
+        override fun searchData(searchText: String): LiveData<List<RaceEntity?>> =
             dao.searchData(searchText)
 
         override suspend fun insertItem(item: RaceEntity) = dao.insertItem(item)

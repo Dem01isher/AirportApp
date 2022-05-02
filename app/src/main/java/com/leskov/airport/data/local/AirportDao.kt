@@ -9,13 +9,13 @@ import java.util.ArrayList
 interface AirportDao {
 
     @Query("SELECT * FROM airport")
-    fun fetchAllData() : List<AirportEntity?>
+    fun fetchAllData() : LiveData<List<AirportEntity?>>
 
-    @Query("SELECT * FROM airport WHERE title LIKE:title")
-    fun findItemByKey(title: String) : AirportEntity
+    @Query("SELECT * FROM airport WHERE city LIKE:city")
+    fun findItemByKey(city: String) : AirportEntity
 
     @Query("SELECT * FROM airport WHERE countryLocation LIKE '%' || :searchText|| '%' OR countOfTerminals LIKE '%' || :searchText|| '%' ")
-    suspend fun searchData(searchText: String) : List<AirportEntity?>
+    fun searchData(searchText: String) : LiveData<List<AirportEntity?>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE, entity = AirportEntity::class)
     suspend fun insertItem(item: AirportEntity)

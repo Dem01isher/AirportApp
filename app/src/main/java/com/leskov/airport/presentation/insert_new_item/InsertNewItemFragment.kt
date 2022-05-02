@@ -47,7 +47,12 @@ class InsertNewItemFragment :
                 binding.headlineLayout.hint = getString(R.string.type_of_race)
                 binding.timeTitle.text = getString(R.string.arrival_time)
                 binding.capacityLayout.hint = getString(R.string.number_of_race)
+                initSelectedTypeList(
+                    binding.tvSelectedType,
+                    resources.getStringArray(R.array.type_of_race).asList()
+                )
                 binding.groupDate.updateVisibility(false)
+                binding.groupTime.updateVisibility(true)
                 binding.modelLayout.hint = getString(R.string.departure_time)
                 binding.producerLayout.updateVisibility(true)
                 binding.producerLayout.hint = getString(R.string.flight_time)
@@ -91,6 +96,7 @@ class InsertNewItemFragment :
                 binding.model.inputType = InputType.TYPE_CLASS_NUMBER
                 binding.dateTitle.text = getString(R.string.term)
                 binding.groupTime.updateVisibility(false)
+                binding.groupDate.updateVisibility(true)
                 binding.producerLayout.updateVisibility(true)
                 binding.producerLayout.hint = getString(R.string.form_of_insurance)
             }
@@ -119,6 +125,8 @@ class InsertNewItemFragment :
                 binding.producerLayout.updateVisibility(true)
                 binding.producerLayout.hint = getString(R.string.destination_country)
                 binding.timeTitle.text = getString(R.string.length)
+                binding.groupTime.updateVisibility(true)
+                binding.timePickerLayout.dotsDivider.updateVisibility(false)
                 binding.timePickerLayout.minute.updateVisibility(false)
             }
             TypeOfEntity.HEADQUARTERS -> {

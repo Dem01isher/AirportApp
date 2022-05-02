@@ -9,13 +9,13 @@ import java.util.ArrayList
 interface TeamDao {
 
     @Query("SELECT * FROM team")
-    fun fetchAllData() : List<TeamEntity?>
+    fun fetchAllData() : LiveData<List<TeamEntity?>>
 
     @Query("SELECT * FROM team WHERE countOfPeople LIKE:countOfPeople")
     fun findItemByKey(countOfPeople: Int) : TeamEntity
 
     @Query("SELECT * FROM team WHERE countOfPilots LIKE '%' || :searchText|| '%' OR numberOf LIKE '%' || :searchText|| '%' ")
-    suspend fun searchData(searchText: String) : List<TeamEntity?>
+    fun searchData(searchText: String) : LiveData<List<TeamEntity?>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE, entity = TeamEntity::class)
     suspend fun insertItem(item: TeamEntity)

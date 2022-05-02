@@ -111,4 +111,6 @@
     <string name="kitchen_is_available">Kitchen is available</string>
     <string name="kitchen_is_disabled">Kitchen is disabled</string>
     <string name="upate">Update</string>
+    <string name="company">Company</string>
+    <string name="update">Update</string>
 </resources>

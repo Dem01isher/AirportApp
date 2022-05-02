@@ -1,44 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
     app:startDestination="@id/mainMenuFragment">
 
     <fragment
-        android:id="@+id/listOfItemsFragment"
-        android:name="com.leskov.airport.presentation.list_of_items.ListOfItemsFragment"
-        android:label="ListOfItemsFragment" >
+        android:id="@+id/mainMenuFragment"
+        android:name="com.leskov.airport.presentation.main_menu.MainMenuFragment"
+        android:label="MainMenuFragment" >
         <action
-            android:id="@+id/action_listOfItemsFragment_to_insertNewItemFragment"
-            app:destination="@id/insertNewItemFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+            android:id="@+id/action_mainMenuFragment_to_listOfTeamsFragment"
+            app:destination="@id/listOfTeamsFragment" />
         <action
-            android:id="@+id/action_listOfItemsFragment_to_updateItemFragment"
-            app:destination="@id/updateItemFragment" />
+            android:id="@+id/action_mainMenuFragment_to_listOfAirCompaniesFragment"
+            app:destination="@id/listOfAirCompaniesFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_listOfAirplanesFragment"
+            app:destination="@id/listOfAirplanesFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_listOfAirportsFragment"
+            app:destination="@id/listOfAirportsFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_listOfHeadquartersFragment"
+            app:destination="@id/listOfHeadquartersFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_listOfInsurancesFragment"
+            app:destination="@id/listOfInsurancesFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_listOfRacesFragment"
+            app:destination="@id/listOfRacesFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_listOfRoutesFragment"
+            app:destination="@id/listOfRoutesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listOfAirCompaniesFragment"
+        android:name="com.leskov.airport.presentation.list_of_items.aircompany.ListOfAirCompaniesFragment"
+        android:label="ListOfAirCompaniesFragment" >
+        <action
+            android:id="@+id/action_listOfAirCompaniesFragment_to_insertNewItemFragment"
+            app:destination="@id/insertNewItemFragment" />
+        <action
+            android:id="@+id/action_listOfAirCompaniesFragment_to_updateListOfCompaniesFragment"
+            app:destination="@id/updateListOfCompaniesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listOfAirplanesFragment"
+        android:name="com.leskov.airport.presentation.list_of_items.airplane.ListOfAirplanesFragment"
+        android:label="ListOfAirplanesFragment" >
+        <action
+            android:id="@+id/action_listOfAirplanesFragment_to_insertNewItemFragment"
+            app:destination="@id/insertNewItemFragment" />
+        <action
+            android:id="@+id/action_listOfAirplanesFragment_to_updateListOfAirplanesFragment"
+            app:destination="@id/updateListOfAirplanesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listOfAirportsFragment"
+        android:name="com.leskov.airport.presentation.list_of_items.airport.ListOfAirportsFragment"
+        android:label="ListOfAirportsFragment" >
+        <action
+            android:id="@+id/action_listOfAirportsFragment_to_insertNewItemFragment"
+            app:destination="@id/insertNewItemFragment" />
+        <action
+            android:id="@+id/action_listOfAirportsFragment_to_updateListOfAirportsFragment"
+            app:destination="@id/updateListOfAirportsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listOfHeadquartersFragment"
+        android:name="com.leskov.airport.presentation.list_of_items.headquarters.ListOfHeadquartersFragment"
+        android:label="ListOfHeadquartersFragment" >
+        <action
+            android:id="@+id/action_listOfHeadquartersFragment_to_insertNewItemFragment"
+            app:destination="@id/insertNewItemFragment" />
+        <action
+            android:id="@+id/action_listOfHeadquartersFragment_to_updateListOfHeadquartersFragment"
+            app:destination="@id/updateListOfHeadquartersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listOfTeamsFragment"
+        android:name="com.leskov.airport.presentation.list_of_items.team.ListOfTeamsFragment"
+        android:label="ListOfTeamsFragment" >
+        <action
+            android:id="@+id/action_listOfTeamsFragment_to_insertNewItemFragment"
+            app:destination="@id/insertNewItemFragment" />
+        <action
+            android:id="@+id/action_listOfTeamsFragment_to_updateListOfTeamsFragment"
+            app:destination="@id/updateListOfTeamsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listOfInsurancesFragment"
+        android:name="com.leskov.airport.presentation.list_of_items.insurance.ListOfInsurancesFragment"
+        android:label="ListOfInsurancesFragment" >
+        <action
+            android:id="@+id/action_listOfInsurancesFragment_to_insertNewItemFragment"
+            app:destination="@id/insertNewItemFragment" />
+        <action
+            android:id="@+id/action_listOfInsurancesFragment_to_updateListOfInsurancesFragment"
+            app:destination="@id/updateListOfInsurancesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listOfRacesFragment"
+        android:name="com.leskov.airport.presentation.list_of_items.race.ListOfRacesFragment"
+        android:label="ListOfRacesFragment" >
+        <action
+            android:id="@+id/action_listOfRacesFragment_to_insertNewItemFragment"
+            app:destination="@id/insertNewItemFragment" />
+        <action
+            android:id="@+id/action_listOfRacesFragment_to_updateListOfRacesFragment"
+            app:destination="@id/updateListOfRacesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listOfRoutesFragment"
+        android:name="com.leskov.airport.presentation.list_of_items.route.ListOfRoutesFragment"
+        android:label="ListOfRoutesFragment" >
+        <action
+            android:id="@+id/action_listOfRoutesFragment_to_insertNewItemFragment"
+            app:destination="@id/insertNewItemFragment" />
+        <action
+            android:id="@+id/action_listOfRoutesFragment_to_updateListOfRoutesFragment"
+            app:destination="@id/updateListOfRoutesFragment" />
     </fragment>
     <fragment
         android:id="@+id/insertNewItemFragment"
         android:name="com.leskov.airport.presentation.insert_new_item.InsertNewItemFragment"
         android:label="InsertNewItemFragment" />
     <fragment
-        android:id="@+id/mainMenuFragment"
-        android:name="com.leskov.airport.presentation.main_menu.MainMenuFragment"
-        android:label="MainMenuFragment" >
-        <action
-            android:id="@+id/action_mainMenuFragment_to_listOfItemsFragment"
-            app:destination="@id/listOfItemsFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-    </fragment>
+        android:id="@+id/updateListOfRoutesFragment"
+        android:name="com.leskov.airport.presentation.list_of_items.route.update.UpdateListOfRoutesFragment"
+        android:label="UpdateListOfRoutesFragment" />
     <fragment
-        android:id="@+id/updateItemFragment"
-        android:name="com.leskov.airport.presentation.update_item.UpdateItemFragment"
-        android:label="UpdateItemFragment" />
+        android:id="@+id/updateListOfTeamsFragment"
+        android:name="com.leskov.airport.presentation.list_of_items.team.update.UpdateListOfTeamsFragment"
+        android:label="UpdateListOfTeamsFragment" />
+    <fragment
+        android:id="@+id/updateListOfCompaniesFragment"
+        android:name="com.leskov.airport.presentation.list_of_items.aircompany.update.UpdateListOfCompaniesFragment"
+        android:label="UpdateListOfCompaniesFragment" />
+    <fragment
+        android:id="@+id/updateListOfAirplanesFragment"
+        android:name="com.leskov.airport.presentation.list_of_items.airplane.update.UpdateListOfAirplanesFragment"
+        android:label="UpdateListOfAirplanesFragment" />
+    <fragment
+        android:id="@+id/updateListOfAirportsFragment"
+        android:name="com.leskov.airport.presentation.list_of_items.airport.update.UpdateListOfAirportsFragment"
+        android:label="UpdateListOfAirportsFragment" />
+    <fragment
+        android:id="@+id/updateListOfHeadquartersFragment"
+        android:name="com.leskov.airport.presentation.list_of_items.headquarters.update.UpdateListOfHeadquartersFragment"
+        android:label="UpdateListOfHeadquartersFragment" />
+    <fragment
+        android:id="@+id/updateListOfInsurancesFragment"
+        android:name="com.leskov.airport.presentation.list_of_items.insurance.update.UpdateListOfInsurancesFragment"
+        android:label="UpdateListOfInsurancesFragment" />
+    <fragment
+        android:id="@+id/updateListOfRacesFragment"
+        android:name="com.leskov.airport.presentation.list_of_items.race.update.UpdateListOfRacesFragment"
+        android:label="fragment_update_list_of_races"
+        tools:layout="@layout/fragment_update_list_of_races" />
 
 
 </navigation>

@@ -6,11 +6,11 @@ import com.leskov.airport.domain.entity.InsuranceEntity
 import javax.inject.Inject
 
 interface InsuranceRepository {
-    fun fetchAllData() : List<InsuranceEntity?>
+    fun fetchAllData() : LiveData<List<InsuranceEntity?>>
 
     fun findItemByKey(serviceName: String) : InsuranceEntity
 
-    suspend fun searchData(searchText: String) : List<InsuranceEntity?>
+    fun searchData(searchText: String) : LiveData<List<InsuranceEntity?>>
 
     suspend fun insertItem(item: InsuranceEntity)
 
@@ -22,11 +22,11 @@ interface InsuranceRepository {
 
     class Base @Inject constructor(private val dao: InsuranceDao) : InsuranceRepository{
 
-        override fun fetchAllData(): List<InsuranceEntity?> = dao.fetchAllData()
+        override fun fetchAllData(): LiveData<List<InsuranceEntity?>> = dao.fetchAllData()
 
         override fun findItemByKey(serviceName: String): InsuranceEntity = dao.findItemByKey(serviceName)
 
-        override suspend fun searchData(searchText: String): List<InsuranceEntity?> =
+        override fun searchData(searchText: String): LiveData<List<InsuranceEntity?>> =
             dao.searchData(searchText)
 
         override suspend fun insertItem(item: InsuranceEntity) = dao.insertItem(item)

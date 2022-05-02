@@ -9,13 +9,13 @@ import java.util.ArrayList
 interface AirCompanyDao {
 
     @Query("SELECT * FROM airCompany")
-    fun fetchAllData() : List<AirCompanyEntity?>
+    fun fetchAllData() : LiveData<List<AirCompanyEntity?>>
 
     @Query("SELECT * FROM airCompany WHERE nameOf LIKE:name")
     fun findItemByKey(name: String) : AirCompanyEntity
 
     @Query("SELECT * FROM airCompany WHERE officeLocation LIKE '%' || :searchText|| '%' OR countOfLanes LIKE '%' || :searchText|| '%' ")
-    suspend fun searchData(searchText: String) : List<AirCompanyEntity?>
+    fun searchData(searchText: String) : LiveData<List<AirCompanyEntity?>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE, entity = AirCompanyEntity::class)
     suspend fun insertItem(item: AirCompanyEntity)
@@ -23,7 +23,7 @@ interface AirCompanyDao {
     @Delete(entity = AirCompanyEntity::class)
     suspend fun deleteItem(item: AirCompanyEntity)
 
-    @Update(entity = AirCompanyEntity::class)
+    @Update
     suspend fun updateItem(item: AirCompanyEntity)
 
     @Query("DELETE FROM airCompany")

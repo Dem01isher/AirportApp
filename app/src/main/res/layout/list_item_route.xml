@@ -3,12 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <data>
-        <variable
-            name="item"
-            type="com.leskov.airport.domain.entity.RouteEntity" />
-    </data>
-
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_container"
         android:layout_width="match_parent"
@@ -49,7 +43,6 @@
                     android:layout_marginTop="8dp"
                     android:layout_weight="1"
                     android:gravity="start"
-                    android:text="@{item.numberOf}"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -114,7 +107,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="start"
-                        android:text="@{item.departureCountry}"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         tools:text="Type" />
@@ -143,7 +135,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="start"
-                        android:text="@{item.destinationCountry}"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         tools:text="model" />
@@ -172,7 +163,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="start"
-                        android:text="@{item.status}"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         tools:text="Type" />
@@ -202,7 +192,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="start"
-                        android:text="@{item.length}"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         tools:text="Type" />

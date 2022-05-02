@@ -7,11 +7,11 @@ import javax.inject.Inject
 
 interface HeadQuarterRepository {
 
-    fun fetchAllData() : List<HeadQuarterEntity?>
+    fun fetchAllData() : LiveData<List<HeadQuarterEntity?>>
 
     fun findItemByType(numberOf: Int) : HeadQuarterEntity
 
-    suspend fun searchData(searchText: String) : List<HeadQuarterEntity?>
+    fun searchData(searchText: String) : LiveData<List<HeadQuarterEntity?>>
 
     suspend fun insertItem(item: HeadQuarterEntity)
 
@@ -23,11 +23,11 @@ interface HeadQuarterRepository {
 
     class Base @Inject constructor(private val dao: HeadQuarterDao) : HeadQuarterRepository{
 
-        override fun fetchAllData(): List<HeadQuarterEntity?> = dao.fetchAllData()
+        override fun fetchAllData(): LiveData<List<HeadQuarterEntity?>> = dao.fetchAllData()
 
         override fun findItemByType(numberOf: Int): HeadQuarterEntity = dao.findItemByType(numberOf)
 
-        override suspend fun searchData(searchText: String): List<HeadQuarterEntity?> =
+        override fun searchData(searchText: String): LiveData<List<HeadQuarterEntity?>> =
             dao.searchData(searchText)
 
         override suspend fun insertItem(item: HeadQuarterEntity) = dao.insertItem(item)

@@ -1,30 +1,48 @@
 package com.leskov.airport.presentation.main_menu
 
-import com.leskov.airport.R
-import com.leskov.airport.base.list_adapter.BaseListAdapter
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.leskov.airport.base.extensions.setOnClickWithDebounce
 import com.leskov.airport.databinding.ListItemMenuBinding
-import com.leskov.airport.domain.model.MainMenuModel
+import com.leskov.airport.domain.model.MainMenuItemType
 
-class MainMenuAdapter : BaseListAdapter<MainMenuModel, ListItemMenuBinding>() {
+class MainMenuAdapter : RecyclerView.Adapter<MainMenuAdapter.MainMenuViewHolder>() {
 
-    override val layoutId: Int
-        get() = R.layout.list_item_menu
+    val list: MutableList<MainMenuItemType> = mutableListOf(
+        MainMenuItemType.AIRCOMPANY,
+        MainMenuItemType.AIRPLANE,
+        MainMenuItemType.AIRPORT,
+        MainMenuItemType.HEADQUARTERS,
+        MainMenuItemType.INSURANCE,
+        MainMenuItemType.RACE,
+        MainMenuItemType.ROUTE,
+        MainMenuItemType.TEAM
+    )
 
-    private var onClickListener : ((MainMenuModel) -> Unit)? = null
+    private var onClickListener: ((Int) -> Unit)? = null
 
-    override fun onViewHolderCreated(binding: ListItemMenuBinding, position: Int) {
-        val menu = getItem(position)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainMenuViewHolder =
+        MainMenuViewHolder(ListItemMenuBinding.inflate(LayoutInflater.from(parent.context)))
 
-        binding.btnMenu.title.setText(menu.titleRes)
-        binding.btnMenu.icon.setImageResource(menu.icon)
+    override fun onBindViewHolder(holder: MainMenuViewHolder, position: Int) {
+        holder.bind(holder.bindingAdapterPosition)
+    }
 
-        binding.btnMenu.crRoot.setOnClickWithDebounce {
-            onClickListener?.invoke(menu)
+    override fun getItemCount(): Int = list.size
+
+    inner class MainMenuViewHolder(val binding: ListItemMenuBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(position: Int) {
+            val item = list[position]
+            binding.title.setText(item.titleRes)
+            binding.cvRoot.setOnClickWithDebounce {
+                onClickListener?.invoke(position)
+            }
         }
     }
 
-    fun onItemClickListener(listener: (MainMenuModel) -> Unit){
-        onClickListener = listener
+    fun setOnItemClickListener(listener: (Int) -> Unit){
+        this.onClickListener = listener
     }
 }

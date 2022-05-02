@@ -2,7 +2,7 @@ package com.leskov.airport.di
 
 import com.leskov.airport.data.local.*
 import com.leskov.airport.data.repository.*
-import com.leskov.airport.domain.use_case.*
+import com.leskov.airport.domain.use_case.InsertItemByTypeUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -56,29 +56,6 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideSelectListTypeUseCase(
-        airCompanyRepository: AirCompanyRepository,
-        airportRepository: AirportRepository,
-        raceRepository: RaceRepository,
-        airplaneRepository: AirplaneRepository,
-        headQuarterRepository: HeadQuarterRepository,
-        insuranceRepository: InsuranceRepository,
-        routeRepository: RouteRepository,
-        teamRepository: TeamRepository
-    ): SelectListTypeUseCase =
-        SelectListTypeUseCase(
-            airCompanyRepository,
-            airportRepository,
-            airplaneRepository,
-            raceRepository,
-            headQuarterRepository,
-            insuranceRepository,
-            routeRepository,
-            teamRepository
-        )
-
-    @Provides
-    @Singleton
     fun provideInsertItemByTypeUseCase(
         airCompanyRepository: AirCompanyRepository,
         airportRepository: AirportRepository,
@@ -88,30 +65,8 @@ object AppModule {
         insuranceRepository: InsuranceRepository,
         routeRepository: RouteRepository,
         teamRepository: TeamRepository
-    ): InsertItemByTypeUseCase = InsertItemByTypeUseCase(
-        airCompanyRepository,
-        airportRepository,
-        airplaneRepository,
-        raceRepository,
-        headQuarterRepository,
-        insuranceRepository,
-        routeRepository,
-        teamRepository
-    )
-
-    @Provides
-    @Singleton
-    fun provideUpdateItemByTypeUseCase(
-        airCompanyRepository: AirCompanyRepository,
-        airportRepository: AirportRepository,
-        raceRepository: RaceRepository,
-        airplaneRepository: AirplaneRepository,
-        headQuarterRepository: HeadQuarterRepository,
-        insuranceRepository: InsuranceRepository,
-        routeRepository: RouteRepository,
-        teamRepository: TeamRepository
-    ): UpdateItemByTypeUseCase =
-        UpdateItemByTypeUseCase(
+    ): InsertItemByTypeUseCase =
+        InsertItemByTypeUseCase(
             airCompanyRepository,
             airportRepository,
             airplaneRepository,
@@ -121,74 +76,4 @@ object AppModule {
             routeRepository,
             teamRepository
         )
-
-    @Provides
-    @Singleton
-    fun provideSearchDataByTypeUseCase(
-        airCompanyRepository: AirCompanyRepository,
-        airportRepository: AirportRepository,
-        raceRepository: RaceRepository,
-        airplaneRepository: AirplaneRepository,
-        headQuarterRepository: HeadQuarterRepository,
-        insuranceRepository: InsuranceRepository,
-        routeRepository: RouteRepository,
-        teamRepository: TeamRepository
-    ): SearchDataByTypeUseCase =
-        SearchDataByTypeUseCase(
-            airCompanyRepository,
-            airportRepository,
-            airplaneRepository,
-            raceRepository,
-            headQuarterRepository,
-            insuranceRepository,
-            routeRepository,
-            teamRepository
-        )
-
-    @Provides
-    @Singleton
-    fun provideFindItemByTypeUseCase(
-        airCompanyRepository: AirCompanyRepository,
-        airportRepository: AirportRepository,
-        raceRepository: RaceRepository,
-        airplaneRepository: AirplaneRepository,
-        headQuarterRepository: HeadQuarterRepository,
-        insuranceRepository: InsuranceRepository,
-        routeRepository: RouteRepository,
-        teamRepository: TeamRepository
-    ): FindItemByTypeUseCase =
-        FindItemByTypeUseCase(
-            airCompanyRepository,
-            airportRepository,
-            airplaneRepository,
-            raceRepository,
-            headQuarterRepository,
-            insuranceRepository,
-            routeRepository,
-            teamRepository
-        )
-
-    @Provides
-    @Singleton
-    fun provideRemoveItemByTypeUseCase(
-        airCompanyRepository: AirCompanyRepository,
-        airportRepository: AirportRepository,
-        raceRepository: RaceRepository,
-        airplaneRepository: AirplaneRepository,
-        headQuarterRepository: HeadQuarterRepository,
-        insuranceRepository: InsuranceRepository,
-        routeRepository: RouteRepository,
-        teamRepository: TeamRepository
-    ): RemoveItemByTypeUseCase =
-        RemoveItemByTypeUseCase(
-            airCompanyRepository,
-            airportRepository,
-            airplaneRepository,
-            raceRepository,
-            headQuarterRepository,
-            insuranceRepository,
-            routeRepository,
-            teamRepository
-        )
-
 }

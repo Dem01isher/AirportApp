@@ -1,8 +1,5 @@
 package com.leskov.airport.domain.entity
 
-import com.leskov.airport.R
-import com.leskov.airport.domain.model.MainMenuModel
-
 object TypeOfEntity {
     const val AIRPORT = "Airport"
     const val AIRCOMPANY = "AirCompany"
@@ -21,7 +18,7 @@ object TypeOfEntity {
         LANES("airport_lanes")
     }
 
-    enum class AirCompany(val value: String){
+    enum class AirCompany(val value: String) {
         NAME("aircompany_name"),
         OFFICE("aircompany_office"),
         NUMBER("aircompany_number"),
@@ -29,7 +26,7 @@ object TypeOfEntity {
         LINES("aircompany_lines")
     }
 
-    enum class Airplane(val value: String){
+    enum class Airplane(val value: String) {
         TITLE("airplane_title"),
         MODEL("airplane_model"),
         TYPE("airplane_type"),
@@ -37,7 +34,7 @@ object TypeOfEntity {
         CAPACITY("airplane_load_capacity")
     }
 
-    enum class Race(val value: String){
+    enum class Race(val value: String) {
         TITLE("race_title"),
         DEPARTURE("race_time_departure"),
         FLIGHT("race_flight"),
@@ -45,7 +42,7 @@ object TypeOfEntity {
         NUMBER("race_number_of_race")
     }
 
-    enum class Route(val value: String){
+    enum class Route(val value: String) {
         STATUS("route_status"),
         DEPARTURE("route_departute"),
         DESTINATION("route_destination"),
@@ -53,7 +50,7 @@ object TypeOfEntity {
         NUMBER("route_number")
     }
 
-    enum class Team(val value: String){
+    enum class Team(val value: String) {
         NUMBER("team_number"),
         MOVERS("team_movers"),
         PILOTS("team_pilots"),
@@ -61,7 +58,7 @@ object TypeOfEntity {
         ENGINEERS("team_engineers")
     }
 
-    enum class Headquarters(val value: String){
+    enum class Headquarters(val value: String) {
         NUMBER("headquarters_number"),
         AVAILABILITY("headquarters_availability"),
         BEDS("headquarters_beds"),
@@ -69,7 +66,7 @@ object TypeOfEntity {
         ENTERTAINMENT("headquarters_entertainment")
     }
 
-    enum class Insurance(val value: String){
+    enum class Insurance(val value: String) {
         NAME("insurance_name"),
         TERM("insurance_term"),
         FORM("insurance_form"),
@@ -87,15 +84,4 @@ val listOfTypes = arrayOf(
     TypeOfEntity.TEAM,
     TypeOfEntity.HEADQUARTERS,
     TypeOfEntity.INSURANCE
-)
-
-val listOfItems: List<MainMenuModel> = listOf(
-    MainMenuModel(TypeOfEntity.AIRPLANE, R.string.airplane, 0),
-    MainMenuModel(TypeOfEntity.AIRCOMPANY, R.string.aircompany, 0),
-    MainMenuModel(TypeOfEntity.RACE, R.string.race, 0),
-    MainMenuModel(TypeOfEntity.AIRPORT, R.string.airport, 0),
-    MainMenuModel(TypeOfEntity.ROUTE, R.string.route,  0),
-    MainMenuModel(TypeOfEntity.TEAM, R.string.team, 0),
-    MainMenuModel(TypeOfEntity.HEADQUARTERS, R.string.headquarters, 0),
-    MainMenuModel(TypeOfEntity.INSURANCE, R.string.insurance, 0)
 )

@@ -51,7 +51,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_weight="1"
                         android:gravity="start"
-                        android:text="@{item.producer}"
+                        android:text="@{String.valueOf(item.producer)}"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:drawableStart="@drawable/ic_airplane"
@@ -86,6 +86,7 @@
                     android:layout_height="match_parent"
                     android:visibility="gone"
                     android:orientation="vertical"
+                    tools:visibility="visible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -105,7 +106,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="24dp"
                             android:gravity="start"
-                            android:text="Type"
+                            android:text="@string/airline_type"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             tools:text="Title" />
@@ -115,7 +116,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="start"
-                            android:text="@{item.type}"
+                            android:text="@{String.valueOf(item.type)}"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             tools:text="Type" />
@@ -134,7 +135,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="24dp"
                             android:gravity="start"
-                            android:text="Model"
+                            android:text="@string/model"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             tools:text="Model" />
@@ -144,7 +145,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="start"
-                            android:text="@{item.model}"
+                            android:text="@{String.valueOf(item.model)}"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             tools:text="model" />
@@ -163,7 +164,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="24dp"
                             android:gravity="start"
-                            android:text="Load Capacity"
+                            android:text="@string/capacity"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             tools:text="Load Capacity" />
@@ -173,7 +174,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="start"
-                            android:text="@{item.loadCapacity}"
+                            android:text="@{String.valueOf(item.loadCapacity)}"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             tools:text="Type" />

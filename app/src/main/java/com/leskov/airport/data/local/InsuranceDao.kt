@@ -9,13 +9,13 @@ import java.util.ArrayList
 interface InsuranceDao {
 
     @Query("SELECT * FROM insurance")
-    fun fetchAllData() : List<InsuranceEntity?>
+    fun fetchAllData() : LiveData<List<InsuranceEntity?>>
 
     @Query("SELECT * FROM insurance WHERE serviceName LIKE:serviceName")
     fun findItemByKey(serviceName: String) : InsuranceEntity
 
     @Query("SELECT * FROM insurance WHERE serviceName LIKE '%' || :searchText|| '%' OR term LIKE '%' || :searchText|| '%' ")
-    suspend fun searchData(searchText: String) : List<InsuranceEntity?>
+    fun searchData(searchText: String) : LiveData<List<InsuranceEntity?>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE, entity = InsuranceEntity::class)
     suspend fun insertItem(item: InsuranceEntity)

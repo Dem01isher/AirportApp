@@ -86,6 +86,7 @@
                 android:layout_height="match_parent"
                 android:visibility="gone"
                 android:orientation="vertical"
+                tools:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -105,7 +106,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="24dp"
                         android:gravity="start"
-                        android:text="Type"
+                        android:text="@string/number_of_race"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         tools:text="Title" />
@@ -134,7 +135,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="24dp"
                         android:gravity="start"
-                        android:text="Model"
+                        android:text="@string/arrival_time"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         tools:text="Model" />
@@ -163,7 +164,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="24dp"
                         android:gravity="start"
-                        android:text="Load Capacity"
+                        android:text="@string/flight_time"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         tools:text="Load Capacity" />

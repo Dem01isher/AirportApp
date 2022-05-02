@@ -7,11 +7,11 @@ import javax.inject.Inject
 
 interface AirplaneRepository {
 
-    fun fetchAllData() : List<AirplaneEntity?>
+    fun fetchAllData() : LiveData<List<AirplaneEntity?>>
 
     fun findItemByKey(producer: String) : AirplaneEntity
 
-    suspend fun searchData(searchText: String) : List<AirplaneEntity?>
+    fun searchData(searchText: String) : LiveData<List<AirplaneEntity?>>
 
     suspend fun insertItem(item: AirplaneEntity)
 
@@ -23,11 +23,11 @@ interface AirplaneRepository {
 
     class Base @Inject constructor(private val dao: AirplaneDao) : AirplaneRepository {
 
-        override fun fetchAllData(): List<AirplaneEntity?> = dao.fetchAllData()
+        override fun fetchAllData(): LiveData<List<AirplaneEntity?>> = dao.fetchAllData()
 
         override fun findItemByKey(producer: String): AirplaneEntity = dao.findItemByKey(producer)
 
-        override suspend fun searchData(searchText: String): List<AirplaneEntity?> = dao.searchData(searchText)
+        override fun searchData(searchText: String): LiveData<List<AirplaneEntity?>> = dao.searchData(searchText)
 
         override suspend fun insertItem(item: AirplaneEntity) = dao.insertItem(item)
 

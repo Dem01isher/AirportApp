@@ -9,13 +9,13 @@ import java.util.ArrayList
 interface RaceDao {
 
     @Query("SELECT * FROM race")
-    fun fetchAllData() : List<RaceEntity?>
+    fun fetchAllData() : LiveData<List<RaceEntity?>>
 
     @Query("SELECT * FROM race WHERE typeOfRace LIKE:typeOfRace")
     fun findItemByKey(typeOfRace: String) : RaceEntity
 
     @Query("SELECT * FROM race WHERE typeOfRace LIKE '%' || :searchText|| '%' OR numberOfRace LIKE '%' || :searchText|| '%' ")
-    suspend fun searchData(searchText: String) : List<RaceEntity?>
+    fun searchData(searchText: String) : LiveData<List<RaceEntity?>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE, entity = RaceEntity::class)
     suspend fun insertItem(item: RaceEntity)

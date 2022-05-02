@@ -9,13 +9,13 @@ import java.util.ArrayList
 interface HeadQuarterDao {
 
     @Query("SELECT * FROM headquarter")
-    fun fetchAllData() : List<HeadQuarterEntity?>
+    fun fetchAllData() : LiveData<List<HeadQuarterEntity?>>
 
     @Query("SELECT * FROM headquarter WHERE numberOf LIKE:numberOf")
     fun findItemByType(numberOf: Int) : HeadQuarterEntity
 
     @Query("SELECT * FROM headquarter WHERE countOfLevels LIKE '%' || :searchText|| '%' OR numberOfBeds LIKE '%' || :searchText|| '%' ")
-    suspend fun searchData(searchText: String) : List<HeadQuarterEntity?>
+    fun searchData(searchText: String) : LiveData<List<HeadQuarterEntity?>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE, entity = HeadQuarterEntity::class)
     suspend fun insertItem(item: HeadQuarterEntity)

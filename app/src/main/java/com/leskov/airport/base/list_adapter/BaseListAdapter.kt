@@ -49,16 +49,6 @@ abstract class BaseListAdapter<T, Binding : ViewDataBinding> :
 
     protected abstract fun onViewHolderCreated(binding: Binding, position: Int)
 
-    // Todo fix listeners
-    override fun setOnItemClickListener(itemView: (T) -> Unit) {
-        itemClickListener = itemView
-    }
-
-    // Todo fix listeners
-    override fun setOnLongItemClickListener(longClick: (Int) -> Unit) {
-        longItemClickListener = longClick
-    }
-
     override fun addItem(item: T) {
         currentList.add(item)
     }

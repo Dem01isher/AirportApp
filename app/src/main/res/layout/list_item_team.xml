@@ -50,6 +50,7 @@
                     android:layout_weight="1"
                     android:gravity="start"
                     android:textColor="@color/black"
+                    android:text="@{String.valueOf(item.numberOf)}"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:drawableStart="@drawable/ic_people"
@@ -113,6 +114,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="start"
+                        android:text="@{String.valueOf(item.countOfPeople)}"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         tools:text="Type" />
@@ -141,6 +143,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="start"
+                        android:text="@{String.valueOf(item.countOfEngineers)}"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         tools:text="model" />
@@ -169,6 +172,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="start"
+                        android:text="@{String.valueOf(item.countOfPilots)}"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         tools:text="Type" />
@@ -198,6 +202,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="start"
+                        android:text="@{String.valueOf(item.countOfPilots)}"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         tools:text="Type" />
@@ -227,6 +232,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="start"
+                        android:text="@{String.valueOf(item.numberOfMovers)}"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         tools:text="Type" />

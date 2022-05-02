@@ -7,11 +7,11 @@ import javax.inject.Inject
 
 interface TeamRepository {
 
-    fun fetchAllData() : List<TeamEntity?>
+    fun fetchAllData() : LiveData<List<TeamEntity?>>
 
     fun findItemByKey(countOfPeople: Int) : TeamEntity
 
-    suspend fun searchData(searchText: String) : List<TeamEntity?>
+    fun searchData(searchText: String) : LiveData<List<TeamEntity?>>
 
     suspend fun insertItem(item: TeamEntity)
 
@@ -23,11 +23,11 @@ interface TeamRepository {
 
     class Base @Inject constructor(private val dao: TeamDao) : TeamRepository{
 
-        override fun fetchAllData(): List<TeamEntity?> = dao.fetchAllData()
+        override fun fetchAllData(): LiveData<List<TeamEntity?>> = dao.fetchAllData()
 
         override fun findItemByKey(countOfPeople: Int): TeamEntity = dao.findItemByKey(countOfPeople)
 
-        override suspend fun searchData(searchText: String): List<TeamEntity?> =
+        override fun searchData(searchText: String): LiveData<List<TeamEntity?>> =
             dao.searchData(searchText)
 
         override suspend fun insertItem(item: TeamEntity) = dao.insertItem(item)
